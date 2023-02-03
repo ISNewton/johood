@@ -1,4 +1,4 @@
-@extends('admin.layouts')
+@extends('admin.layouts.main')
 
 @section('content')
 <div class="content-wrapper">
@@ -25,11 +25,20 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">DataTable with minimal features & hover style</h3>
+            <div class="d-flex justify-content-between">
+
+              <h3 class="card-title">DataTable with minimal features & hover style</h3>
+              <a class="btn btn-primary text-end" href="{{ route('dashboard.products.create') }}">
+                <i class="fas fa-plus"></i>
+                Add New
+              </a>
+            </div>
+
           </div>
+
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="example2" class="table table-bordered table-hover">
+            <table id="data-table" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Rendering engine</th>
@@ -58,3 +67,31 @@
   <!-- /.content -->
 </div>
 @endsection
+
+@push('scripts')
+<script>
+  let role;
+
+  let dataTable = $('#data-table').DataTable({
+      dom: "tiplr",
+      serverSide: true,
+      processing: true,
+      ajax: {
+          url: '{{ route('dashboard.products.data') }}',
+      },
+      columns: [
+          {data: 'record_select', name: 'record_select', searchable: false, sortable: false},
+          {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, sortable: false},
+          {data: 'title', title: 'name'},
+      ],
+     
+  });
+
+  $('#data-table-search').keyup(function () {
+      dataTable.search(this.value).draw();
+  })
+
+
+</script>
+
+@endpush

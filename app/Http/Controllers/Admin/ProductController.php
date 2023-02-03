@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,19 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.products.index');
+    }
+
+    public function data()
+    {
+        $products = product::query();
+
+        return DataTables::of($products)
+            ->editColumn('created_at', function (Product $product) {
+                return $product->created_at->format('Y-m-d');
+            })
+            ->addIndexColumn()
+            ->toJson();
     }
 
     /**
@@ -25,7 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**
@@ -36,7 +49,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
