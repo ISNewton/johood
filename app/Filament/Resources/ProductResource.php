@@ -28,6 +28,12 @@ use App\Filament\Resources\ProductResource\Pages\CreateProduct;
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
+    protected static ?string $icon = 'heroicon-o-collection';
+    protected static ?string $label = 'المنتج';
+    protected static ?string $pluralLabel = 'المنتجات';
+
+ 
+
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
