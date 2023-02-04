@@ -11,9 +11,11 @@ use Filament\Resources\Resource;
 use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\Toggle;
 use Filament\Pages\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\ProductResource\Pages;
@@ -25,6 +27,7 @@ use Webbingbrasil\FilamentAdvancedFilter\Filters\TextFilter;
 use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\Pages\ListProducts;
 use App\Filament\Resources\ProductResource\Pages\CreateProduct;
+use Filament\Forms\Components\Checkbox;
 
 class ProductResource extends Resource
 {
@@ -45,7 +48,7 @@ class ProductResource extends Resource
                 TextInput::make('title')->label(__('admin.products.title'))->required(),
                 TextInput::make('quantity')->label(__('admin.products.quantity'))->required()->numeric(),
                 TextInput::make('price')->label(__('admin.products.price'))->required()->numeric(),
-                Toggle::make('is_visible')->label(__('admin.products.is_visible'))->required()->default(true),
+                Checkbox::make('is_visible')->label(__('admin.products.is_visible'))->default(true),
                 RichEditor::make('description')->label(__('admin.products.description'))->required()->columnSpanFull(3),
                 SpatieMediaLibraryFileUpload::make('images')
                     ->collection('products')
@@ -63,7 +66,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('title')->label(__('admin.products.title')),
                 Tables\Columns\TextColumn::make('quantity')->label(__('admin.products.quantity'))->sortable(),
                 Tables\Columns\TextColumn::make('price')->label(__('admin.products.quantity'))->sortable(),
-                SpatieMediaLibraryImageColumn::make('images')->collection('products')->label(__('admin.products.images'))
+                IconColumn::make('is_visible')->label(__('admin.products.is_visible'))->boolean(),
 
             ])
             ->filters([

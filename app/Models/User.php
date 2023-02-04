@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Testing\Fluent\Concerns\Interaction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements HasMedia
@@ -77,4 +78,8 @@ class User extends Authenticatable implements HasMedia
         self::TYPE_STUDENT => 'طالب',
         self::TYPE_ADMIN => 'مدير',
     ];
+
+    public function orders() :HasMany {
+        return $this->hasMany(Order::class);
+    }
 }
