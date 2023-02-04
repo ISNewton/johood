@@ -18,6 +18,8 @@ class OrderPolicy
      */
     public function viewAny(User $user)
     {
+        return in_array($user->type,[User::TYPE_ADMIN,User::TYPE_BANK_EMPLOYEE]);
+
         return $user->type === User::TYPE_ADMIN;
     }
 
@@ -30,6 +32,7 @@ class OrderPolicy
      */
     public function view(User $user, Order $order)
     {
+        return in_array($user->type,[User::TYPE_ADMIN,User::TYPE_BANK_EMPLOYEE]);
         return $user->type === User::TYPE_ADMIN;
     }
 
@@ -53,6 +56,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order)
     {
+        return in_array($user->type,[User::TYPE_ADMIN,User::TYPE_BANK_EMPLOYEE]);
         return $user->type === User::TYPE_ADMIN;
     }
 

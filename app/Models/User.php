@@ -71,6 +71,7 @@ class User extends Authenticatable implements HasMedia , FilamentUser
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'type' => 'integer',
     ];
 
     const TYPE_STUDENT = 1;

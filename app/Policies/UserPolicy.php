@@ -17,7 +17,6 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
         return $user->type === User::TYPE_ADMIN;
     }
 
@@ -30,7 +29,6 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return true;
         return $user->type === User::TYPE_ADMIN;
     }
 
