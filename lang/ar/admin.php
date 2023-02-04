@@ -7,6 +7,7 @@ return [
     'price' => 'السعر',
     'images' => 'الصور',
     'description' => 'الوصف',
+    'is_visible' => 'متاح',
   ],
   'users' => [
     'type' => 'نوع المستخدم',

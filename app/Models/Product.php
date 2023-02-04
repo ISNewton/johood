@@ -17,5 +17,10 @@ class Product extends Model implements HasMedia
         'description',
         'quantity',
         'price',
+        'is_visible',
+    ];
+
+    protected $casts = [
+        'is_visible' => 'boolean',
     ];
 }

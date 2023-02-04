@@ -9,6 +9,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Tables\Filters\Filter;
+use Filament\Forms\Components\Toggle;
 use Filament\Pages\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
@@ -44,6 +45,7 @@ class ProductResource extends Resource
                 TextInput::make('title')->label(__('admin.products.title'))->required(),
                 TextInput::make('quantity')->label(__('admin.products.quantity'))->required()->numeric(),
                 TextInput::make('price')->label(__('admin.products.price'))->required()->numeric(),
+                Toggle::make('is_visible')->label(__('admin.products.is_visible'))->required()->default(true),
                 RichEditor::make('description')->label(__('admin.products.description'))->required()->columnSpanFull(3),
                 SpatieMediaLibraryFileUpload::make('images')
                     ->collection('products')
