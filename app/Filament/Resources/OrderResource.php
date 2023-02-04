@@ -22,6 +22,7 @@ use App\Filament\Resources\OrderResource\Pages\ViewOrder;
 use App\Filament\Resources\OrderResource\Pages\ListOrders;
 use App\Filament\Resources\OrderResource\Pages\CreateOrder as PagesCreateOrder;
 use App\Filament\Resources\OrderResource\RelationManagers\UserRelationManager;
+use App\Filament\Resources\OrderResource\RelationManagers\ProductRelationManager;
 
 class OrderResource extends Resource
 {
@@ -77,6 +78,7 @@ class OrderResource extends Resource
     {
         return [
             UserRelationManager::class,
+            ProductRelationManager::class,
         ];
     }
 

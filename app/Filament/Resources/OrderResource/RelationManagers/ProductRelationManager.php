@@ -10,17 +10,17 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UserRelationManager extends RelationManager
+class ProductRelationManager extends RelationManager
 {
-    protected static string $relationship = 'user';
+    protected static string $relationship = 'product';
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -30,7 +30,9 @@ class UserRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\TextColumn::make('quantity'),
             ])
             ->filters([
                 //
