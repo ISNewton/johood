@@ -2,6 +2,8 @@
 
 return [
   'products' => [
+    'products' => 'المنتجات',
+    'product' => 'منتج',
     'title' => 'العنوان',
     'quantity' => 'الكمية',
     'price' => 'السعر',
@@ -10,6 +12,8 @@ return [
     'is_visible' => 'متاح',
   ],
   'users' => [
+    'users' => ' المستخدمين',
+    'user' => 'مستخدم',
     'type' => 'نوع المستخدم',
     'name' => 'الاسم',
     'email' => 'البريد الالكتروني',
