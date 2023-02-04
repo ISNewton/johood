@@ -13,6 +13,7 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Select;
 use Filament\Pages\Actions\EditAction;
 use Filament\Forms\Components\Tabs\Tab;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,6 +24,8 @@ use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Filament\Resources\UserResource\Pages\ListUsers;
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\RelationManagers;
+use Closure;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class UserResource extends Resource
@@ -39,6 +42,9 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
+                // user type student:
+                Select::make('type')->label(__('admin.users.type'))
+                    ->options(User::TYPES)->default('male')->reactive(),
                 Tabs::make('Heading')
                     ->tabs([
                         Tabs\Tab::make(__('admin.users.student_data'))
@@ -57,10 +63,10 @@ class UserResource extends Resource
                                     ->collection('users')
                                     ->label(__('admin.users.personal_id'))
                                     ->required(),
-                            //     SpatieMediaLibraryFileUpload::make('student_photo')
-                            //         ->collection('users')
-                            //         ->label(__('admin.users.photo'))
-                            //         ->required(),
+                                SpatieMediaLibraryFileUpload::make('student_photo')
+                                    ->collection('users')
+                                    ->label(__('admin.users.photo'))
+                                    ->required(),
                             ])->columns(2),
                         Tabs\Tab::make(__('admin.users.guarantor_data'))
                             ->schema([
@@ -101,14 +107,32 @@ class UserResource extends Resource
                                 TextInput::make('house_owner_phone')->label(__('admin.users.house_owner_phone'))->required(),
                                 TextInput::make('house_number')->label(__('admin.users.house_number'))->required(),
                             ])->columns(2),
-                    ])->columnSpanFull(),
+                    ])->columnSpanFull()->hidden(function (Closure $get) {
+                        return $get('type') == User::TYPE_ADMIN;
+                    }),
+
+                // user type admin:
+                Card::make()
+                ->schema([
+                    TextInput::make('name')->label(__('admin.users.name'))->required(),
+                    TextInput::make('email')->label(__('admin.users.email'))->required(),
+                    TextInput::make('password')->label(__('admin.users.password'))->password()->required(),
+                ])->hidden(function (Closure $get) {
+                    return $get('type') == User::TYPE_STUDENT;
+                })
+     
+
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([])
+            ->columns([
+                Tables\Columns\TextColumn::make('name')->label(__('admin.users.name')),
+                Tables\Columns\TextColumn::make('personal_id')->label(__('admin.users.personal_id'))->sortable(),
+                SpatieMediaLibraryImageColumn::make('student_photo')->collection('users')->label(__('admin.users.photo'))
+            ])
             ->filters([
                 //
             ])

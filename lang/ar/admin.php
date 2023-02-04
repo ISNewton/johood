@@ -9,7 +9,10 @@ return [
     'description' => 'الوصف',
   ],
   'users' => [
+    'type' => 'نوع المستخدم',
     'name' => 'الاسم',
+    'email' => 'البريد الالكتروني',
+    'password' => 'كلمة المرور',
     'gender' => 'الجنس',
     'first_phone' => 'الهاتف الاول',
     'second_phone' => 'الهاتف الثاني',
