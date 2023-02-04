@@ -10,4 +10,5 @@ class Order extends Model
     use HasFactory;
 
     const STATUS_PENDING = 1;
+    
 }

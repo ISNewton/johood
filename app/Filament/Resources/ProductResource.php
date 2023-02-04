@@ -51,8 +51,6 @@ class ProductResource extends Resource
                     ->required()
                     ->multiple()
                     ->columnSpanFull(3)
-
-
             ]);
     }
 

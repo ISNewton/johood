@@ -24,12 +24,13 @@ return new class extends Migration
             $table->string('personal_id')->nullable();
             //guarantor
             $table->string('guarantor_name')->nullable();
+            $table->string('guarantor_gender')->nullable();
+            $table->string('guarantor_first_phone')->nullable();
+            $table->string('guarantor_second_phone')->nullable();
             $table->string('guarantor_personal_id')->nullable();
             $table->string('guarantor_job')->nullable();
             $table->string('guarantor_work_company')->nullable();
             $table->string('guarantor_work_address')->nullable();
-            $table->string('guarantor_first_phone')->nullable();
-            $table->string('guarantor_second_phone')->nullable();
             //housing
             $table->string('house_address')->nullable();
             $table->string('house_owner')->nullable();
