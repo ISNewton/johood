@@ -26,9 +26,9 @@ use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Filament\Resources\UserResource\Pages\ListUsers;
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\RelationManagers;
-use App\Filament\Resources\UserResource\RelationManagers\OrdersRelationManager;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use App\Filament\Resources\UserResource\RelationManagers\OrdersRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\ProductsRelationManager;
 
 class UserResource extends Resource
@@ -152,6 +152,8 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
+            ProductsRelationManager::class,
+
         ];
     }
 
@@ -161,7 +163,7 @@ class UserResource extends Resource
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
-            // 'view' => Pages\ViewUser::route('/{record}'),
+            'view' => Pages\ViewUser::route('/{record}'),
 
         ];
     }

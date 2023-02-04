@@ -27,6 +27,6 @@ class Product extends Model implements HasMedia
 
     public function users() : BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class,'orders');
     }
 }

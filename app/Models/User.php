@@ -84,6 +84,6 @@ class User extends Authenticatable implements HasMedia
     // }
 
     public function products() {
-        return $this->belongsToMany(Product::class)->as('orders')->withPivot('quantity', 'price');
+        return $this->belongsToMany(Product::class,'orders')->withPivot('quantity');
     }
 }

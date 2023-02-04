@@ -55,8 +55,8 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                // TextColumn::make('product.title'),
-                // TextColumn::make('user.name'),
+                TextColumn::make('product.title'),
+                TextColumn::make('user.name'),
             ])
             ->filters([
                 //
