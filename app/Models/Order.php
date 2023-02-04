@@ -20,18 +20,13 @@ class Order extends Model
     ];
     const STATUS_PENDING = 1;
 
-    public function product(): BelongsToMany
+    public function product(): BelongsTo
     {
-        return $this->belongsToMany(Product::class)->withPivot('title');
+        return $this->belongsTo(Product::class);
     }
 
-    public function scopePending($query)
+    public function user(): BelongsTo
     {
-        return $query->where('status', self::STATUS_PENDING);
-    }
-
-    public function user(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class)->withPivot('name');
+        return $this->belongsTo(User::class);
     }
 }

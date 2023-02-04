@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model implements HasMedia
 {
@@ -23,4 +24,9 @@ class Product extends Model implements HasMedia
     protected $casts = [
         'is_visible' => 'boolean',
     ];
+
+    public function users() : BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

@@ -79,11 +79,11 @@ class User extends Authenticatable implements HasMedia
         self::TYPE_ADMIN => 'مدير',
     ];
 
-    public function orders() :HasMany {
-        return $this->hasMany(Order::class);
-    }
+    // public function orders() :HasMany {
+    //     return $this->hasMany(Order::class);
+    // }
 
     public function products() {
-        return $this->hasManyThrough(Product::class, Order::class);
+        return $this->belongsToMany(Product::class)->as('orders')->withPivot('quantity', 'price');
     }
 }

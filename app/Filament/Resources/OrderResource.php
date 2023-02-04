@@ -18,7 +18,6 @@ use App\Filament\Resources\OrderResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\OrderResource\Pages\EditOrder;
 use App\Filament\Resources\OrderResource\Pages\ListOrders;
-use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Filament\Resources\OrderResource\Pages\CreateOrder as PagesCreateOrder;
 
 class OrderResource extends Resource
@@ -56,8 +55,8 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('product.title'),
-                TextColumn::make('user.name'),
+                // TextColumn::make('product.title'),
+                // TextColumn::make('user.name'),
             ])
             ->filters([
                 //
