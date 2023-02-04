@@ -72,6 +72,7 @@ return [
     |
     */
 
+    // 'brand' => env('APP_NAME'),
     'brand' => env('APP_NAME'),
 
     /*

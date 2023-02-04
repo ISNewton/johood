@@ -11,6 +11,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\OrderResource\Pages;
@@ -38,11 +39,15 @@ class OrderResource extends Resource
             ->schema([
                 Select::make('user_id')->label(__('admin.users.user'))
                     ->relationship('user', 'name')->required(),
-                Select::make('product_id')->label(__('admin.products.product'))
-                    ->relationship('product', 'title',fn($q) => $q->where('quantity' , '>' , 0))->required()->reactive(),
-                TextInput::make('price')->default(function($get) {
-                    return Product::find($get('product_id'))?->price;
-                }),
+                Select::make('product_id')
+                    ->label(__('admin.products.product'))
+                    ->relationship('product', 'title')
+                    ->required()
+                    ->reactive()
+                    ->afterStateUpdated(function ($set, $state) {
+                        $set('price', Product::find($state)?->price);
+                    }),
+                TextInput::make('price')->disabled(),
 
             ]);
     }
@@ -51,7 +56,8 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('product.title'),
+                TextColumn::make('user.name'),
             ])
             ->filters([
                 //
