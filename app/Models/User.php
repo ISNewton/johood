@@ -21,6 +21,30 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
+        'gender',
+        'first_phone',
+        'second_phone',
+        'address',
+        'personal_id',
+
+        //guarantor
+        'guarantor_name',
+        'guarantor_gender',
+        'guarantor_first_phone',
+        'guarantor_second_phone',
+        'guarantor_personal_id',
+        'guarantor_job',
+        'guarantor_work_company',
+        'guarantor_work_address',
+
+        //housing
+        'house_address',
+        'house_owner',
+        'house_owner_personal_id',
+        'house_owner_gender',
+        'house_owner_phone',
+        'house_number',
     ];
 
     /**
