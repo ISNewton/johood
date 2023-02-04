@@ -11,14 +11,17 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\OrderResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\OrderResource\Pages\EditOrder;
+use App\Filament\Resources\OrderResource\Pages\ViewOrder;
 use App\Filament\Resources\OrderResource\Pages\ListOrders;
 use App\Filament\Resources\OrderResource\Pages\CreateOrder as PagesCreateOrder;
+use App\Filament\Resources\OrderResource\RelationManagers\UserRelationManager;
 
 class OrderResource extends Resource
 {
@@ -47,7 +50,6 @@ class OrderResource extends Resource
                         $set('price', Product::find($state)?->price);
                     }),
                 TextInput::make('price')->disabled(),
-
             ]);
     }
 
@@ -63,6 +65,8 @@ class OrderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -72,7 +76,7 @@ class OrderResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            UserRelationManager::class,
         ];
     }
 
@@ -82,6 +86,7 @@ class OrderResource extends Resource
             'index' => ListOrders::route('/'),
             'create' => PagesCreateOrder::route('/create'),
             'edit' => EditOrder::route('/{record}/edit'),
+            'view' => ViewOrder::route('/{record}'),
         ];
     }
 }
