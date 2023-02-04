@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use Closure;
 use Filament\Forms;
 use App\Models\User;
 use Filament\Tables;
@@ -16,6 +17,7 @@ use Filament\Forms\Components\Tabs\Tab;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\UserResource\Pages;
@@ -24,7 +26,6 @@ use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Filament\Resources\UserResource\Pages\ListUsers;
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\RelationManagers;
-use Closure;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
@@ -44,8 +45,8 @@ class UserResource extends Resource
             ->schema([
                 // user type student:
                 Select::make('type')->label(__('admin.users.type'))
-                    ->options(User::TYPES)->default('male')->reactive(),
-                Tabs::make('Heading')
+                    ->options(User::TYPES)->default('male')->reactive()->visibleOn('create'),
+                Tabs::make('Product')
                     ->tabs([
                         Tabs\Tab::make(__('admin.users.student_data'))
                             ->schema([
@@ -113,14 +114,14 @@ class UserResource extends Resource
 
                 // user type admin:
                 Card::make()
-                ->schema([
-                    TextInput::make('name')->label(__('admin.users.name'))->required(),
-                    TextInput::make('email')->label(__('admin.users.email'))->required(),
-                    TextInput::make('password')->label(__('admin.users.password'))->password()->required(),
-                ])->hidden(function (Closure $get) {
-                    return $get('type') == User::TYPE_STUDENT;
-                })
-     
+                    ->schema([
+                        TextInput::make('name')->label(__('admin.users.name'))->required(),
+                        TextInput::make('email')->label(__('admin.users.email'))->required(),
+                        TextInput::make('password')->label(__('admin.users.password'))->password()->required(),
+                    ])->hidden(function (Closure $get) {
+                        return $get('type') == User::TYPE_STUDENT;
+                    })
+
 
             ]);
     }
@@ -134,7 +135,8 @@ class UserResource extends Resource
                 SpatieMediaLibraryImageColumn::make('student_photo')->collection('users')->label(__('admin.users.photo'))
             ])
             ->filters([
-                //
+                SelectFilter::make('type')->label(__('admin.users.type'))
+                    ->options(User::TYPES)
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
