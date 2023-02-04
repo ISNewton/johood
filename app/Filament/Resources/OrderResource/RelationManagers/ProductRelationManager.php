@@ -16,6 +16,9 @@ class ProductRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    protected static ?string $label = 'طلب';
+    protected static ?string $pluralLabel = 'الطلبات';
+
     public static function form(Form $form): Form
     {
         return $form

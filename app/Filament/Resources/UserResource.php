@@ -111,7 +111,7 @@ class UserResource extends Resource
                                 TextInput::make('house_number')->label(__('admin.users.house_number'))->required(),
                             ])->columns(2),
                     ])->columnSpanFull()->hidden(function (Closure $get) {
-                        return $get('type') == User::TYPE_ADMIN;
+                        return $get('type') != User::TYPE_STUDENT;
                     }),
 
                 // user type admin:

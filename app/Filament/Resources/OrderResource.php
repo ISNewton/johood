@@ -41,12 +41,12 @@ class OrderResource extends Resource
         return $form
             ->schema([
                 Select::make('user_id')->label(__('admin.users.user'))
-                    ->relationship('user', 'name')->required(),
+                    ->relationship('user', 'name')->required()->disabledOn('edit'),
                 Select::make('product_id')
                     ->label(__('admin.products.product'))
                     ->relationship('product', 'title')
                     ->required()
-                    ->reactive()
+                    ->reactive()->disabledOn('edit')
                     ->afterStateUpdated(function ($set, $state) {
                         $set('price', Product::find($state)?->price);
                     }),
@@ -58,8 +58,9 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('product.title'),
-                TextColumn::make('user.name'),
+                TextColumn::make('product.title')->label(__('admin.products.title')),
+                TextColumn::make('user.name')->label(__('admin.users.user')),
+                TextColumn::make('created_at')->since()->label(__('admin.site.created_at')),
             ])
             ->filters([
                 //

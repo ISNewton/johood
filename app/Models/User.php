@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Filament\Models\Contracts\FilamentUser;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Notifications\Notifiable;
@@ -12,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements HasMedia , FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
     use InteractsWithMedia;
@@ -73,11 +75,18 @@ class User extends Authenticatable implements HasMedia
 
     const TYPE_STUDENT = 1;
     const TYPE_ADMIN = 2;
+    const TYPE_BANK_EMPLOYEE = 3;
 
     const TYPES = [
         self::TYPE_STUDENT => 'طالب',
         self::TYPE_ADMIN => 'مدير',
+        self::TYPE_BANK_EMPLOYEE => 'موظف البنك',
     ];
+
+    public function canAccessFilament(): bool
+    {
+        return $this->type === self::TYPE_ADMIN;
+    }
 
     // public function orders() :HasMany {
     //     return $this->hasMany(Order::class);

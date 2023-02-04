@@ -47,6 +47,17 @@ return [
     'house_owner_phone' => ' رقم هاتف مالك المنزل',
     'house_number' => '  رقم المنزل',
     'house_data' => 'بيانات السكن',
+  ],
 
+  'orders' => [
+    'orders' => 'الطلبات',
+    'order' => 'طلب',
+  ],
+
+  'site' => [
+    'created_at' => 'تاريخ الانشاء',
+    'updated_at' => 'تاريخ التعديل',
+    'deleted_at' => 'تاريخ الحذف',
+    
   ]
 ];

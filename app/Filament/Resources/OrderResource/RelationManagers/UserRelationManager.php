@@ -16,6 +16,9 @@ class UserRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static ?string $label = 'مستخدم';
+    protected static ?string $pluralLabel = 'المستخدمين';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -30,7 +33,9 @@ class UserRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')->label(__('admin.users.name')),
+                Tables\Columns\TextColumn::make('first_phone')->label(__('admin.users.first_phone')),
+                Tables\Columns\TextColumn::make('personal_id')->label(__('admin.users.personal_id')),
             ])
             ->filters([
                 //
@@ -46,5 +51,5 @@ class UserRelationManager extends RelationManager
             ->bulkActions([
                 // Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }    
+    }
 }
