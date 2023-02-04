@@ -85,6 +85,7 @@ class User extends Authenticatable implements HasMedia , FilamentUser
 
     public function canAccessFilament(): bool
     {
+        return true;
         return $this->type === self::TYPE_ADMIN;
     }
 
