@@ -82,4 +82,8 @@ class User extends Authenticatable implements HasMedia
     public function orders() :HasMany {
         return $this->hasMany(Order::class);
     }
+
+    public function products() {
+        return $this->hasManyThrough(Product::class, Order::class);
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Order extends Model
 {
@@ -19,9 +20,9 @@ class Order extends Model
     ];
     const STATUS_PENDING = 1;
 
-    public function product(): BelongsTo
+    public function product(): BelongsToMany
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('title');
     }
 
     public function scopePending($query)
@@ -29,8 +30,8 @@ class Order extends Model
         return $query->where('status', self::STATUS_PENDING);
     }
 
-    public function user(): BelongsTo
+    public function user(): BelongsToMany
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class)->withPivot('name');
     }
 }
