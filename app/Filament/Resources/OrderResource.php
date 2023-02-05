@@ -29,6 +29,7 @@ use Filament\Pages\Actions\Modal\Actions\ButtonAction;
 use App\Filament\Resources\OrderResource\Pages\EditOrder;
 use App\Filament\Resources\OrderResource\Pages\ViewOrder;
 use App\Filament\Resources\OrderResource\Pages\ListOrders;
+use App\Filament\Resources\OrderResource\Pages\SendMessage;
 use App\Filament\Resources\OrderResource\RelationManagers\UserRelationManager;
 use App\Filament\Resources\OrderResource\Pages\CreateOrder as PagesCreateOrder;
 use App\Filament\Resources\OrderResource\RelationManagers\ProductRelationManager;
@@ -119,6 +120,7 @@ class OrderResource extends Resource
             'create' => PagesCreateOrder::route('/create'),
             'edit' => EditOrder::route('/{record}/edit'),
             'view' => ViewOrder::route('/{record}'),
+            'sendMessage' => SendMessage::route('/{record}/send-message'),
         ];
     }
 
@@ -137,10 +139,5 @@ class OrderResource extends Resource
                         ->required()
                 ]),
         ];
-    }
-
-    public function sendMessage($record, $authorId): void
-    {
-        $record->sendMessage($authorId);
     }
 }
