@@ -61,6 +61,14 @@ return [
 
   ],
 
+  'paymnet' => [
+    'payments' => 'المدفوعات',
+    'payment' => 'مدفوع',
+    'amount' => 'المبلغ',
+    'date' => 'التاريخ',
+    'order_id' => 'رقم الطلب',
+  ],
+
   'site' => [
     'created_at' => 'تاريخ الانشاء',
     'updated_at' => 'تاريخ التعديل',

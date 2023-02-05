@@ -15,6 +15,9 @@ class ProductRelationManager extends RelationManager
     protected static string $relationship = 'product';
 
     protected static ?string $recordTitleAttribute = 'title';
+    protected static ?string $recordUrl = '/products/{record.id}';
+    
+
 
     protected static ?string $label = 'طلب';
     protected static ?string $pluralLabel = 'الطلبات';
