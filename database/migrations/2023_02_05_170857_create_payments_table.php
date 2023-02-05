@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('payment_date')->nullable();
+            $table->boolean('payment_status')->nullable();
             $table->timestamps();
         });
     }
