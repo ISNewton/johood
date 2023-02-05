@@ -18,7 +18,14 @@ class Order extends Model
         'quantity',
         'price',
     ];
+
+    protected $casts = [
+        'status' => 'integer',
+    ];
+
     const STATUS_PENDING = 1;
+    const STATUS_REVIEWING= 2;
+    const STATUS_RECEIVED= 3;
 
     public function product(): BelongsTo
     {

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Order;
+
 return [
   'products' => [
     'products' => 'المنتجات',
@@ -52,6 +54,11 @@ return [
   'orders' => [
     'orders' => 'الطلبات',
     'order' => 'طلب',
+    'status' => 'الحالة',
+    Order::STATUS_PENDING => 'مقدم',
+    Order::STATUS_REVIEWING => 'مرشح',
+    Order::STATUS_RECEIVED => 'مستلم',
+
   ],
 
   'site' => [
