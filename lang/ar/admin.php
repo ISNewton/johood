@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Order;
+use App\Models\Payment;
 
 return [
   'products' => [
@@ -61,12 +62,16 @@ return [
 
   ],
 
-  'paymnet' => [
+  'payments' => [
     'payments' => 'المدفوعات',
     'payment' => 'مدفوع',
     'amount' => 'المبلغ',
     'date' => 'التاريخ',
     'order_id' => 'رقم الطلب',
+    'payment_date' => 'تاريخ الدفع',
+    'payment_status' => 'حالة الدفع',
+    Payment::STATUS_PAID => 'مدفوع',
+    Payment::STATUS_REFUSED => 'متعسر',
   ],
 
   'site' => [

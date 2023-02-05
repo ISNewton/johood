@@ -16,6 +16,9 @@ class Payment extends Model
         'payment_status',
     ];
 
+    const STATUS_PAID = 1;
+    const STATUS_REFUSED = 2;
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
