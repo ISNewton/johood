@@ -8,9 +8,11 @@ use App\Models\Product;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Pages\Actions\Action;
 use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\Toggle;
 use Filament\Pages\Actions\EditAction;
+use Filament\Forms\Components\Checkbox;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
@@ -27,7 +29,6 @@ use Webbingbrasil\FilamentAdvancedFilter\Filters\TextFilter;
 use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\Pages\ListProducts;
 use App\Filament\Resources\ProductResource\Pages\CreateProduct;
-use Filament\Forms\Components\Checkbox;
 
 class ProductResource extends Resource
 {
@@ -71,11 +72,10 @@ class ProductResource extends Resource
             ])
             ->filters([
                 TextFilter::make('title')
-
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make(),                
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -100,17 +100,13 @@ class ProductResource extends Resource
         ];
     }
 
-    public function isTableSearchable(): bool
+    protected function getActions(): array
     {
-        return true;
-    }
-
-    protected function applySearchToTableQuery(Builder $query): Builder
-    {
-        if (filled($searchQuery = $this->getTableSearchQuery())) {
-            $query->whereIn('id', Product::search($searchQuery)->keys());
-        }
-
-        return $query;
+        return [
+            Action::make('sendMessdlsdsldksage')
+            ->label('sendMessage')
+            ->action('sendMessage')
+            ->color('primary'),
+        ];
     }
 }

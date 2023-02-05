@@ -20,10 +20,12 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Tables\Columns\BadgeColumn;
+use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\SelectColumn;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\OrderResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Pages\Actions\Modal\Actions\ButtonAction;
 use App\Filament\Resources\OrderResource\Pages\EditOrder;
 use App\Filament\Resources\OrderResource\Pages\ViewOrder;
 use App\Filament\Resources\OrderResource\Pages\ListOrders;
@@ -123,17 +125,21 @@ class OrderResource extends Resource
     protected function getActions(): array
     {
         return [
-            Action::make('sendMessage')
+            Action::make('UPLOAD')->extraAttributes(['class' => 'button'])
+                ->action('kkp')
+                ->requiresConfirmation()
+                ->modalHeading('UPLOAD FILE')
+                ->modalButton('UPLOAD FILE')
                 ->form([
-                    Forms\Components\Select::make('authorId')
-                        ->label('Author')
-                        ->options(User::query()->pluck('name', 'id'))
-                        ->required(),
-                ])
+                    FileUpload::make('attachment')
+                        ->extraAttributes(['class' => 'custom'])
+                        ->label('UPLOAD SURAT PENGANTAR')
+                        ->required()
+                ]),
         ];
     }
 
-    public function sendMessage($record, $authorId)
+    public function sendMessage($record, $authorId): void
     {
         $record->sendMessage($authorId);
     }
