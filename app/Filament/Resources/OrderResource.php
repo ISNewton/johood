@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use App\Models\User;
 use Filament\Tables;
 use App\Models\Order;
 use Pages\CreateOrder;
@@ -11,11 +12,13 @@ use Filament\Pages\Page;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Pages\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Resources\Pages\EditRecord;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,9 +29,8 @@ use App\Filament\Resources\OrderResource\Pages\ViewOrder;
 use App\Filament\Resources\OrderResource\Pages\ListOrders;
 use App\Filament\Resources\OrderResource\RelationManagers\UserRelationManager;
 use App\Filament\Resources\OrderResource\Pages\CreateOrder as PagesCreateOrder;
-use App\Filament\Resources\OrderResource\RelationManagers\PaymentsRelationManager;
 use App\Filament\Resources\OrderResource\RelationManagers\ProductRelationManager;
-use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\OrderResource\RelationManagers\PaymentsRelationManager;
 
 class OrderResource extends Resource
 {
@@ -52,10 +54,10 @@ class OrderResource extends Resource
                     ->label(__('admin.products.product'))
                     ->relationship('product', 'title')
                     ->required()
-                    ->reactive()->disabledOn('edit')->dehydrated(fn (Page $livewire) => $livewire instanceof EditRecord)
-                    ->afterStateUpdated(function ($set, $state) {
-                        $set('price', Product::find($state)?->price);
-                    }),
+                    ->reactive()
+                    ->disabledOn('edit')
+                    ->dehydrated(fn (Page $livewire) => $livewire instanceof EditRecord)
+                    ->afterStateUpdated(fn ($set, $state) => $set('price', Product::find($state)?->price)),
                 Select::make('status')->label(__('admin.orders.status'))
                     ->options([
                         Order::STATUS_PENDING => __('admin.orders.' . Order::STATUS_PENDING),
@@ -93,7 +95,6 @@ class OrderResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
-
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -117,5 +118,23 @@ class OrderResource extends Resource
             'edit' => EditOrder::route('/{record}/edit'),
             'view' => ViewOrder::route('/{record}'),
         ];
+    }
+
+    protected function getActions(): array
+    {
+        return [
+            Action::make('sendMessage')
+                ->form([
+                    Forms\Components\Select::make('authorId')
+                        ->label('Author')
+                        ->options(User::query()->pluck('name', 'id'))
+                        ->required(),
+                ])
+        ];
+    }
+
+    public function sendMessage($record, $authorId)
+    {
+        $record->sendMessage($authorId);
     }
 }

@@ -18,6 +18,7 @@ class Order extends Model
         'user_id',
         'quantity',
         'price',
+        'status',
     ];
 
     protected $casts = [
