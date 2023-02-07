@@ -38,6 +38,19 @@ class StudentForm extends Component
             'student.personal_id' => 'required|string',
             'student.first_phone' => 'required|integer',
             'student.second_phone' => 'nullable|integer',
+
+            'student.guarantor_name' => 'required|string|max:255',
+            'student.guarantor_gender' => 'required|in:male,female',
+            'student.guarantor_first_phone' => 'required|integer',
+            'student.guarantor_second_phone' => 'nullable|integer',
+            'student.guarantor_personal_id' => 'required|string',
+            'student.guarantor_job' => 'required|string',
+            'student.guarantor_work_company' => 'required|string',
+            'student.guarantor_work_address' => 'required|string',
+
+            'student.house_address' => 'required|string',
+            'student.house_owner' => 'required|string',
+            'student.house_owner_personal_id' => 'required|string',
         ];
     }
 
