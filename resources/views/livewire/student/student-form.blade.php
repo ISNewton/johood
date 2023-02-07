@@ -134,12 +134,15 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model.defer='student.photo' type="file" id="input8"
+                                            <input wire:model='student.photo' type="file" id="input8"
                                                 name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
                                                 data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
+                                            @error('student.photo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -174,12 +177,15 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model.defer='student.personal_id_photo' type="file" id="input9"
+                                            <input wire:model='student.personal_id_photo' type="file" id="input9"
                                                 name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
                                                 data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
+                                            @error('student.personal_id_photo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -329,6 +335,9 @@
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
+                                            @error('student.guarantor_photo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -363,12 +372,15 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model.defer='student.guarantor_personal_id_photo' type="file" id="input9"
-                                                name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
-                                                data-imagevalidate="yes"
+                                            <input wire:model.defer='student.guarantor_personal_id_photo' type="file"
+                                                id="input9" name="q10_pleaseUpload[]" multiple=""
+                                                class="form-upload-multiple" data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
+                                            @error('student.guarantor_personal_id_photo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

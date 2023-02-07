@@ -26,7 +26,9 @@ return [
     'second_phone' => 'الهاتف الثاني',
     'address' => 'العنوان',
     'personal_id' => 'رقم الهوية',
+    'personal_id_photo' => 'رقم الهوية',
     'photo' => ' الصورة الشخصية ',
+    'personal_id_photo' => 'صورة الهوية',
     'student_data' => 'بيانات الطالب',
     //guarantor
     'guarantor_name' => 'اسم الضامن',
@@ -34,6 +36,7 @@ return [
     'guarantor_first_phone' => ' رقم الهاتف الاول للضامن ',
     'guarantor_second_phone' => ' رقم الهاتف الثاني للضامن ',
     'guarantor_personal_id' => 'رقم هوية الضامن',
+    'guarantor_personal_id_photo' => 'صورة هوية الضامن',
     'guarantor_job' => 'وظيفة الضامن',
     'guarantor_work_company' => ' اسم عمل الضامن ',
     'guarantor_work_address' => 'عنوان عمل الضامن',
