@@ -22,7 +22,12 @@ class StudentForm extends Component
 
     public function mount()
     {
-        $this->student = new User();
+        $this->student = new User([
+            'type' => User::TYPE_STUDENT,
+            'gender' => 'male',
+        ]);
+
+        
     }
 
     protected function rules()
@@ -49,19 +54,21 @@ class StudentForm extends Component
     public function validatePersonalInfo()
     {
         $this->validate();
-        dd(55);
+        $this->currentStep = 2;
     }
 
     public function validateGuarantorInfo()
     {
         $this->validate();
-        dd(55);
+        $this->currentStep = 3;
+
     }
 
     public function validateHousingInfo()
     {
         $this->validate();
-        dd(55);
+        $this->currentStep = 4;
+
     }
 
     public function save()
