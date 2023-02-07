@@ -37,8 +37,8 @@ class StudentForm extends Component
             'student.personal_id' => 'required|string',
             'student.first_phone' => 'required|integer',
             'student.second_phone' => 'nullable|integer',
-            'student.photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
-            'student.personal_id_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
+            'student.photo' => 'required|file',
+            'student.personal_id_photo' => 'required|file',
 
             'student.guarantor_name' => 'required|string|max:255',
             'student.guarantor_gender' => 'required|in:male,female',
@@ -71,9 +71,8 @@ class StudentForm extends Component
             'student.personal_id' => 'required|string',
             'student.first_phone' => 'required|integer',
             'student.second_phone' => 'required|integer',
-            'student.photo' => 'required|image|max:1024',
-            'student.personal_id_photo' => 'required|image|mimes:jpg,jpeg,png|max:1024',
-
+            'student.photo' => ['required','file','max:1024'],
+            'student.personal_id_photo' => ['required','file','max:1024'],
         ], [], [
             'student.name' => 'الاسم الكامل',
             'student.gender' => 'الجنس',
