@@ -22,3 +22,5 @@ use Illuminate\Support\Facades\Route;
 //     Route::get('/dashbaord/products/data')->name('products.data');
 //     Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
 // });
+
+Route::get('/', [App\Http\Controllers\FormController::class, 'index'])->name('form');
