@@ -4,13 +4,16 @@ namespace App\Http\Livewire\Student;
 
 use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Intervention\Image\Facades\Image;
 
 class StudentForm extends Component
 {
     use WithFileUploads;
 
     public User $student;
+    public $currentStep = 1;
 
     public function render()
     {
@@ -47,5 +50,43 @@ class StudentForm extends Component
     {
         $this->validate();
         dd(55);
+    }
+
+    public function validateGuarantorInfo()
+    {
+        $this->validate();
+        dd(55);
+    }
+
+    public function validateHousingInfo()
+    {
+        $this->validate();
+        dd(55);
+    }
+
+    public function save()
+    {
+        $this->student->addMedia(Image::make($this->student['photo'])->basePath())
+            ->usingName(Str::uuid())
+            ->toMediaCollection('student_photo');
+    }
+
+    public function directToCorrectStep()
+    {
+        switch ($this->currentStep) {
+            case 1:
+                $this->validatePersonalInfo();
+                break;
+
+            case 2:
+                $this->validateGuarantorInfo();
+                break;
+
+            case 3:
+                $this->validateHousingInfo();
+                break;
+
+            default:
+        }
     }
 }

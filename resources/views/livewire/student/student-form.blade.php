@@ -9,7 +9,16 @@
     <li id="li2" class="form-input-wide">
         <div class="form-header-group  header-default">
             <div class="header-text httal htvam">
-                <h2 id="header2" class="form-header" style="text-align:right;">المعلومات الشخصية</h2>
+                <h2 id="header2" class="form-header" style="text-align:right;">
+                    @if ($currentStep == 1)
+                    "المعلومات الشخصية"
+                    @elseif($currentStep == 2)
+                    "معلومات الضامن"
+
+                    @elseif($currentStep == 3)
+                    "معلومات السكن"
+                    @endif
+                </h2>
             </div>
         </div>
     </li>
@@ -48,12 +57,12 @@
                             <label class="form-sub-label" id="label2" style="min-height:13px"
                                 aria-hidden="false">الجنس</label>
                         </span>
-                       
+
                     </span>
                     @error('student.gender')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    
+
                     <span class="form-address-line form-address-state-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
                             <input wire:model='student.personal_id' style="margin-left: 22px" type="text" id="input5"
@@ -61,7 +70,7 @@
                             <label class="form-sub-label" id="label3" style="min-height:13px" aria-hidden="false">الرقم
                                 الوطني</label>
                         </span>
-                       
+
                     </span>
                     @error('student.personal_id')
                     <span class="text-danger">{{ $message }}</span>
