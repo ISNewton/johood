@@ -13,10 +13,10 @@
       color: red;
     }
   </style>
+  @livewireStyles
 </head>
 
 <body>
-  @livewireStyles()
 
   <form class="jotform-form" id="form1">
     <input type="hidden" name="formID" />
@@ -32,7 +32,7 @@
       @livewire('student.student-form')
     </div>
   </form>
-  @livewireScripts()
+  @livewireScripts
 </body>
 
 </html>

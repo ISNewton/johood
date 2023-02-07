@@ -25,7 +25,7 @@
 
 
     @if ($currentStep == 1)
-        
+
     <li class="form-line" id="li3" style="text-align:right;">
         <div id="div1" class="form-input-wide">
             <div class="form-address-table jsTest-addressField">
@@ -41,8 +41,8 @@
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-street-line jsTest-address-lineField">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.name' type="text" id="input3" name="q34_address[addr_line2]"
-                                class="form-textbox form-address-line" />
+                            <input wire:model.defer='student.name' type="text" id="input3"
+                                name="q34_address[addr_line2]" class="form-textbox form-address-line" />
                             @error('student.name')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -53,7 +53,8 @@
                     <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
                             {{-- <input type="text" id="input4" class="form-textbox form-address-city" /> --}}
-                            <select class="form-textbox form-address-city" wire:model='student.gender' name="" id="">
+                            <select class="form-textbox form-address-city" wire:model.defer='student.gender' name=""
+                                id="">
                                 <option value="male">ذكر</option>
                                 <option value="female">أنثى</option>
                             </select>
@@ -68,8 +69,8 @@
 
                     <span class="form-address-line form-address-state-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.personal_id' style="margin-left: 22px" type="text" id="input5"
-                                name="q34_address[state]" class="form-textbox form-address-state" />
+                            <input wire:model.defer='student.personal_id' style="margin-left: 22px" type="text"
+                                id="input5" name="q34_address[state]" class="form-textbox form-address-state" />
                             <label class="form-sub-label" id="label3" style="min-height:13px" aria-hidden="false">الرقم
                                 الوطني</label>
                         </span>
@@ -82,11 +83,11 @@
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.first_phone' type="number" id="input6"
+                            <input wire:model.defer='student.first_phone' type="number" id="input6"
                                 class="form-textbox form-address-city" />
                             <label class="form-sub-label" id="label4" style="min-height:13px" aria-hidden="false">رقم
                                 الهاتف
-                                2</label>
+                                1</label>
                         </span>
                         @error('student.first_phone')
                         <span class="text-danger">{{ $message }}</span>
@@ -94,11 +95,11 @@
                     </span>
                     <span class="form-address-line form-address-state-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.second_phone' style="margin-left: 22px" type="number" id="input7"
-                                name="q34_address[state]" class="form-textbox form-address-state" />
+                            <input wire:model.defer='student.second_phone' style="margin-left: 22px" type="number"
+                                id="input7" name="q34_address[state]" class="form-textbox form-address-state" />
                             <label class="form-sub-label" id="label5" style="min-height:13px" aria-hidden="false">رقم
                                 الهاتف
-                                1</label>
+                                2</label>
                         </span>
                         @error('student.second_phone')
                         <span class="text-danger">{{ $message }}</span>
@@ -108,7 +109,6 @@
             </div>
         </div>
     </li>
-
 
     <div style="text-align:right;" class="form-address-line-wrapper jsTest-address-line-wrapperField">
         <span class="form-address-line form-address-city-line jsTest-address-lineField ">
@@ -134,7 +134,7 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model='student.photo' type="file" id="input8"
+                                            <input wire:model.defer='student.photo' type="file" id="input8"
                                                 name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
                                                 data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
@@ -174,7 +174,7 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model='student.personal_id_photo' type="file" id="input9"
+                                            <input wire:model.defer='student.personal_id_photo' type="file" id="input9"
                                                 name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
                                                 data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
@@ -194,10 +194,7 @@
         </span>
     </div>
 
-    @endif
-
-    @if ($currentStep == 2)
-        
+    @elseif($currentStep == 2)
     <li class="form-line" id="li2_3" style="text-align:right;">
         <div id="div2_1" class="form-input-wide">
             <div class="form-address-table jsTest-addressField">
@@ -213,61 +210,90 @@
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-street-line jsTest-address-lineField">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.guarantor_name' type="text" id="input2_3" name="q34_address[addr_line2]"
-                                class="form-textbox form-address-line" />
+                            <input wire:model.defer='student.guarantor_name' type="text" id="input2_3"
+                                name="q34_address[addr_line2]" class="form-textbox form-address-line" />
                         </span>
                     </span>
+                    @error('student.guarantor_name')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.guarantor_gender' type="text" id="input2_4" class="form-textbox form-address-city" />
+                            <select class="form-textbox form-address-city" wire:model.defer='student.guarantor_gender'
+                                name="" id="">
+                                <option value="male">ذكر</option>
+                                <option value="female">أنثى</option>
+                            </select>
                             <label class="form-sub-label" id="label2_2" style="min-height:13px"
                                 aria-hidden="false">الجنس</label>
                         </span>
                     </span>
+                    @error('student.guarantor_gender')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     <span class="form-address-line form-address-state-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.guarantor_personal_id' style="margin-left: 22px" type="text" id="input2_5" name="q34_address[state]"
+                            <input wire:model.defer='student.guarantor_personal_id' style="margin-left: 22px"
+                                type="text" id="input2_5" name="q34_address[state]"
                                 class="form-textbox form-address-state" />
                             <label class="form-sub-label" id="label2_3" style="min-height:13px"
                                 aria-hidden="false">الرقم الوطني</label>
                         </span>
                     </span>
+                    @error('student.guarantor_personal_id')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.guarantor_work_company' type="text" id="input2_6" class="form-textbox form-address-city" />
+                            <input wire:model.defer='student.guarantor_work_company' type="text" id="input2_6"
+                                class="form-textbox form-address-city" />
                             <label class="form-sub-label" id="label2_4" style="min-height:13px" aria-hidden="false">جهة
                                 الوظيفة</label>
                         </span>
                     </span>
+                    @error('student.guarantor_work_company')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <span class="form-address-line form-address-state-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.guarantor_job' style="margin-left: 22px" type="text" id="input2_7" name="q34_address[state]"
-                                class="form-textbox form-address-state" />
+                            <input wire:model.defer='student.guarantor_job' style="margin-left: 22px" type="text"
+                                id="input2_7" name="q34_address[state]" class="form-textbox form-address-state" />
                             <label class="form-sub-label" id="label2_5" style="min-height:13px"
                                 aria-hidden="false">الوظيفة</label>
                         </span>
                     </span>
+                    @error('student.guarantor_job')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.guarantor_first_phone' type="text" id="input2_8" class="form-textbox form-address-city" />
+                            <input wire:model.defer='student.guarantor_first_phone' type="text" id="input2_8"
+                                class="form-textbox form-address-city" />
                             <label class="form-sub-label" id="label2_6" style="min-height:13px" aria-hidden="false">رقم
                                 الهاتف</label>
                         </span>
                     </span>
+                    @error('student.guarantor_first_phone')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <span class="form-address-line form-address-state-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.guarantor_work_address' style="margin-left: 22px" type="text" id="input2_9" name="q34_address[state]"
+                            <input wire:model.defer='student.guarantor_work_address' style="margin-left: 22px"
+                                type="text" id="input2_9" name="q34_address[state]"
                                 class="form-textbox form-address-state" />
                             <label class="form-sub-label" id="label2_7" style="min-height:13px"
                                 aria-hidden="false">عنوان الوظيفة</label>
                         </span>
                     </span>
+                    @error('student.guarantor_work_address')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -276,10 +302,11 @@
     <div style="text-align:right;" class="form-address-line-wrapper jsTest-address-line-wrapperField">
         <span class="form-address-line form-address-city-line jsTest-address-lineField ">
             <span class="form-sub-label-container" style="vertical-align:top">
-                <li class="form-line" data-type="control_fileupload" id="li2_3">
-                    <label class="form-label form-label-top form-label-auto" id="label_8" for="input_10"> الرجاء تحميل
-                        الصورة الشخصية</label>
-                    <div id="div2_2" class="form-input-wide" data-layout="full">
+                <li class="form-line" data-type="control_fileupload" id="li4">
+                    <label class="form-label form-label-top form-label-auto" id="label6" for="input_10"> الرجاء تحميل
+                        الصورة
+                        الشخصية</label>
+                    <div id="div2" class="form-input-wide" data-layout="full">
                         <div class="jfQuestion-fields" data-wrapper-react="true">
                             <div class="jfField isFilled">
                                 <div class="jfUpload-wrapper">
@@ -296,7 +323,161 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input type="file" id="input_11" name="q10_pleaseUpload[]" multiple=""
+                                            <input wire:model.defer='student.guarantor_photo' type="file" id="input8"
+                                                name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
+                                                data-imagevalidate="yes"
+                                                data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
+                                                data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
+                                                data-component="fileupload" aria-label="Browse Files" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-wrapper-react="true"></div>
+                            </div>
+                            <span style="display:none" class="cancelText">Cancel</span>
+                            <span style="display:none" class="ofText">of</span>
+                        </div>
+                    </div>
+                </li>
+            </span>
+        </span>
+        <span class="form-address-line form-address-state-line jsTest-address-lineField ">
+            <span class="form-sub-label-container" style="vertical-align:top">
+                <li class="form-line" data-type="control_fileupload" id="li5">
+                    <label class="form-label form-label-top form-label-auto" id="label7" for="input_10"> الرجاء تحميل
+                        الرقم
+                        الوطني</label>
+                    <div id="div3" class="form-input-wide" data-layout="full">
+                        <div class="jfQuestion-fields" data-wrapper-react="true">
+                            <div class="jfField isFilled">
+                                <div class="jfUpload-wrapper">
+                                    <div class="jfUpload-container">
+
+                                        <div class="jfUpload-button-container">
+                                            <div class="jfUpload-button" aria-hidden="true" tabindex="0"
+                                                style="display:none" data-version="v2">Browse Files
+                                                <div class="jfUpload-heading forDesktop">Drag and drop files here</div>
+                                                <div class="jfUpload-heading forMobile">اختر الملف</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding-left:120px" class="jfUpload-files-container">
+                                        <div class="validate[multipleUpload]">
+                                            <input wire:model.defer='student.guarantor_personal_id_photo' type="file" id="input9"
+                                                name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
+                                                data-imagevalidate="yes"
+                                                data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
+                                                data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
+                                                data-component="fileupload" aria-label="Browse Files" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-wrapper-react="true"></div>
+                            </div>
+                            <span style="display:none" class="cancelText">Cancel</span>
+                            <span style="display:none" class="ofText">of</span>
+                        </div>
+                    </div>
+                </li>
+            </span>
+        </span>
+    </div>
+
+    @elseif($currentStep == 3)
+
+    <li class="form-line" id="li3_3" style="text-align:right;">
+        <div id="div3_1" class="form-input-wide">
+            <div class="form-address-table jsTest-addressField">
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
+                    <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <input wire:model.defer='student.house_number' type="number" id="input3_3"
+                                class="form-textbox form-address-city" />
+                            <label class="form-sub-label" id="label3_1" style="min-height:13px" aria-hidden="false">رقم
+                                المنزل</label>
+                        </span>
+                        @error('student.house_number')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </span>
+                    <span class="form-address-line form-address-state-line jsTest-address-lineField ">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <input wire:model.defer='student.house_address' style="margin-left: 22px" type="text"
+                                id="input3_4" name="q34_address[state]" class="form-textbox form-address-state" />
+                            <label class="form-sub-label" id="label3_2" style="min-height:13px"
+                                aria-hidden="false">عنوان السكن</label>
+                        </span>
+                        @error('student.house_address')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </span>
+                </div>
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
+                    <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <input wire:model.defer='student.house_owner' type="text" id="input3_5"
+                                class="form-textbox form-address-city" />
+                            <label class="form-sub-label" id="label3_3" style="min-height:13px" aria-hidden="false">جنس
+                                مالك المنزل</label>
+                        </span>
+                        @error('student.house_owner')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </span>
+                </div>
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
+                    <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <input wire:model.defer='student.house_owner_phone' type="text" id="input3_7"
+                                class="form-textbox form-address-city" />
+                            <label class="form-sub-label" id="label3_5" style="min-height:13px" aria-hidden="false">رقم
+                                هاتف مالك المنزل</label>
+                        </span>
+                        @error('student.house_owner_phone')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </span>
+                    <span class="form-address-line form-address-state-line jsTest-address-lineField ">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <input wire:model.defer='student.house_owner_personal_id' style="margin-left: 22px"
+                                type="text" id="input3_8" name="q34_address[state]"
+                                class="form-textbox form-address-state" />
+                            <label class="form-sub-label" id="label3_6" style="min-height:13px"
+                                aria-hidden="false">الرقم الوطني لمالك المنزل</label>
+                        </span>
+                        @error('student.house_owner_personal_id')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </span>
+                </div>
+            </div>
+        </div>
+    </li>
+
+    <div style="text-align:right;" class="form-address-line-wrapper jsTest-address-line-wrapperField">
+        <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+            <span class="form-sub-label-container" style="vertical-align:top">
+                <li class="form-line" data-type="control_fileupload" id="li3_4">
+                    <label class="form-label form-label-top form-label-auto" id="label3_7" for="input_10"> الرجاء تحميل
+                        شهادة السكن</label>
+                    <div id="div3_2" class="form-input-wide" data-layout="full">
+                        <div class="jfQuestion-fields" data-wrapper-react="true">
+                            <div class="jfField isFilled">
+                                <div class="jfUpload-wrapper">
+                                    <div class="jfUpload-container">
+
+                                        <div style="margin-left:225px" class="jfUpload-button-container">
+                                            <div class="jfUpload-button" aria-hidden="true" tabindex="0"
+                                                style="display:none" data-version="v2">Browse Files
+                                                <div class="jfUpload-heading forDesktop">Drag and drop files here
+                                                </div>
+                                                <div class="jfUpload-heading forMobile">اختر الملف</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding-left:120px" class="jfUpload-files-container">
+                                        <div class="validate[multipleUpload]">
+                                            <input type="file" id="input3_9" name="q10_pleaseUpload[]" multiple=""
                                                 class="form-upload-multiple" data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
@@ -315,10 +496,10 @@
         </span>
         <span class="form-address-line form-address-state-line jsTest-address-lineField ">
             <span class="form-sub-label-container" style="vertical-align:top">
-                <li class="form-line" data-type="control_fileupload" id="li2_4">
-                    <label class="form-label form-label-top form-label-auto" id="label_9" for="input_10"> الرجاء تحميل
+                <li class="form-line" data-type="control_fileupload" id="li3_5">
+                    <label class="form-label form-label-top form-label-auto" id="label3_8" for="input_10"> الرجاء تحميل
                         الرقم الوطني</label>
-                    <div id="div2_3" class="form-input-wide" data-layout="full">
+                    <div id="div3_3" class="form-input-wide" data-layout="full">
                         <div class="jfQuestion-fields" data-wrapper-react="true">
                             <div class="jfField isFilled">
                                 <div class="jfUpload-wrapper">
@@ -334,7 +515,7 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input type="file" id="input_12" name="q10_pleaseUpload[]" multiple=""
+                                            <input type="file" id="input3_10" name="q10_pleaseUpload[]" multiple=""
                                                 class="form-upload-multiple" data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
@@ -352,7 +533,7 @@
             </span>
         </span>
     </div>
-
+    @else
     @endif
 
     {{-- buttons --}}
@@ -360,15 +541,15 @@
         <div class="form-pagebreak" data-component="pagebreak">
             <div class="form-pagebreak-next-container">
                 <a>
-                    <button wire:click='validatePersonalInfo' id="button1" type="button"
+                    <button wire:click='directToCorrectStep' id="button1" type="button"
                         class="form-pagebreak-next  jf-form-buttons" data-component="pagebreak-next">التالي
                     </button>
                 </a>
             </div>
             <div class="form-pagebreak-back-container">
                 <a>
-                    <button id="button2" type="button" class="form-pagebreak-back  jf-form-buttons"
-                        data-component="pagebreak-back">السابق
+                    <button wire:click='{{  $currentStep > 1 ? ' back' : '' }}' id="button2" type="button"
+                        class="form-pagebreak-back  jf-form-buttons" data-component="pagebreak-back">السابق
                     </button>
                 </a>
             </div>
