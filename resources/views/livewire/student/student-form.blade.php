@@ -17,6 +17,11 @@
 
                     @elseif($currentStep == 3)
                     معلومات السكن
+
+                    @elseif($currentStep == 4)
+                    معلومات الدفع
+                    @else
+
                     @endif
                 </h2>
             </div>
@@ -528,7 +533,7 @@
                                                 data-component="fileupload" aria-label="Browse Files" />
                                         </div>
                                         @error('house_certificate_photo')
-                                            <div class="text-danger">{{ $message }}</div>
+                                        <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -583,7 +588,80 @@
             </span>
         </span>
     </div>
-    @else
+    @elseif($currentStep == 4)
+    <li class="form-line" id="li3" style="text-align:right;">
+        <div id="div1" class="form-input-wide">
+            <div class="form-address-table jsTest-addressField">
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
+                    <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <select class="form-textbox form-address-city" wire:model.defer='student.payment_method'
+                                name="" id="">
+                                <option value="male">بنك الخرطوم - بنكك</option>
+                                <option value="female">بنك فيصل - فوري</option>
+                            </select>
+                            <label class="form-sub-label" id="label2" style="min-height:13px" aria-hidden="false">وسيلة
+                                الدفع</label>
+                        </span>
+
+                    </span>
+                    @error('student.payment_method')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+
+                    <span class="form-address-line form-address-state-line jsTest-address-lineField ">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <input wire:model.defer='student.payment_number' style="margin-left: 22px" type="number"
+                                id="input5" name="q34_address[state]" class="form-textbox form-address-state" />
+                            <label class="form-sub-label" id="label3" style="min-height:13px" aria-hidden="false">رقم العملية</label>
+                        </span>
+
+                    </span>
+                    @error('student.payment_number')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
+                    <span class="form-address-line form-address-street-line jsTest-address-lineField">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <input wire:model.defer='student.payment_date' type="date" id="input3"
+                                name="q34_address[addr_line2]" class="form-textbox form-address-line" />
+                            @error('student.payment_date')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </span>
+                    </span>
+                </div>
+{{-- 
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
+                    <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <input wire:model.defer='student.first_phone' type="number" id="input6"
+                                class="form-textbox form-address-city" />
+                            <label class="form-sub-label" id="label4" style="min-height:13px" aria-hidden="false">رقم
+                                الهاتف
+                                1</label>
+                        </span>
+                        @error('student.first_phone')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </span>
+                    <span class="form-address-line form-address-state-line jsTest-address-lineField ">
+                        <span class="form-sub-label-container" style="vertical-align:top">
+                            <input wire:model.defer='student.second_phone' style="margin-left: 22px" type="number"
+                                id="input7" name="q34_address[state]" class="form-textbox form-address-state" />
+                            <label class="form-sub-label" id="label5" style="min-height:13px" aria-hidden="false">رقم
+                                الهاتف
+                                2</label>
+                        </span>
+                        @error('student.second_phone')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </span>
+                </div> --}}
+            </div>
+        </div>
+    </li>
     @endif
 
     {{-- buttons --}}
