@@ -52,6 +52,11 @@ class User extends Authenticatable implements HasMedia , FilamentUser
         'house_owner_gender',
         'house_owner_phone',
         'house_number',
+
+        //payment
+        'payment_method',
+        'payment_date',
+        'payment_number',
     ];
 
     /**
