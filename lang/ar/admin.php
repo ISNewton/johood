@@ -53,6 +53,9 @@ return [
     'house_owner_phone' => ' رقم هاتف مالك المنزل',
     'house_number' => '  رقم المنزل',
     'house_data' => 'بيانات السكن',
+    'house_certificate_photo' => 'صورة شهادة السكن',
+    'house_owner_personal_id_photo' => 'صورة هوية مالك المنزل',
+
   ],
 
   'orders' => [

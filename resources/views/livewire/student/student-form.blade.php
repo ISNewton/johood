@@ -4,6 +4,25 @@
             <div class="header-text httac htvam">
                 <h1 id="header1" class="form-header">استمارة الاشتراك</h1>
             </div>
+            @if (session()->has('success'))
+                
+            <h3 style="
+            text-align:center;
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            position: relative;
+            padding: .75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            border-radius: .25rem;
+            "></h3>
+            @endif
+
         </div>
     </li>
     <li id="li2" class="form-input-wide">
@@ -276,7 +295,7 @@
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model.defer='student.guarantor_first_phone' type="text" id="input2_8"
+                            <input wire:model.defer='student.guarantor_first_phone' type="number" id="input2_8"
                                 class="form-textbox form-address-city" />
                             <label class="form-sub-label" id="label2_6" style="min-height:13px" aria-hidden="false">رقم
                                 الهاتف</label>
@@ -478,7 +497,7 @@
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model.defer='student.house_owner_phone' type="text" id="input3_7"
+                            <input wire:model.defer='student.house_owner_phone' type="number" id="input3_7"
                                 class="form-textbox form-address-city" />
                             <label class="form-sub-label" id="label3_5" style="min-height:13px" aria-hidden="false">رقم
                                 هاتف مالك المنزل</label>
@@ -597,8 +616,8 @@
                         <span class="form-sub-label-container" style="vertical-align:top">
                             <select class="form-textbox form-address-city" wire:model.defer='student.payment_method'
                                 name="" id="">
-                                <option value="male">بنك الخرطوم - بنكك</option>
-                                <option value="female">بنك فيصل - فوري</option>
+                                <option value="bankak">بنك الخرطوم - بنكك</option>
+                                <option value="fawry">بنك فيصل - فوري</option>
                             </select>
                             <label class="form-sub-label" id="label2" style="min-height:13px" aria-hidden="false">وسيلة
                                 الدفع</label>
@@ -613,7 +632,8 @@
                         <span class="form-sub-label-container" style="vertical-align:top">
                             <input wire:model.defer='student.payment_number' style="margin-left: 22px" type="number"
                                 id="input5" name="q34_address[state]" class="form-textbox form-address-state" />
-                            <label class="form-sub-label" id="label3" style="min-height:13px" aria-hidden="false">رقم العملية</label>
+                            <label class="form-sub-label" id="label3" style="min-height:13px" aria-hidden="false">رقم
+                                العملية</label>
                         </span>
 
                     </span>
@@ -626,13 +646,15 @@
                         <span class="form-sub-label-container" style="vertical-align:top">
                             <input wire:model.defer='student.payment_date' type="date" id="input3"
                                 name="q34_address[addr_line2]" class="form-textbox form-address-line" />
+                            <label class="form-sub-label" id="label3_5" style="min-height:13px"
+                                aria-hidden="false">@lang('admin.payments.payment_date')</label>
                             @error('student.payment_date')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </span>
                     </span>
                 </div>
-{{-- 
+                {{--
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">

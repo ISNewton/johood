@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Student;
 
 use App\Models\User;
 use HtmlSanitizer\Extension\Table\NodeVisitor\ThNodeVisitor;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -14,7 +15,7 @@ class StudentForm extends Component
     use WithFileUploads;
 
     public User $student;
-    public $currentStep = 4;
+    public $currentStep = 1;
     public $photo;
     public $personal_id_photo;
     public $guarantor_photo;
@@ -33,6 +34,7 @@ class StudentForm extends Component
         $this->student = new User([
             'type' => User::TYPE_STUDENT,
             'gender' => 'male',
+            'guarantor_gender' => 'male',
         ]);
     }
 
@@ -44,8 +46,8 @@ class StudentForm extends Component
             'student.personal_id' => 'required|string',
             'student.first_phone' => 'required|integer',
             'student.second_phone' => 'nullable|integer',
-            'photo' => ['required','image','mimes:jpg,jpeg,png,webp','max:1024'],
-            'personal_id_photo' => ['required','image','mimes:jpg,jpeg,png,webp','max:1024'],
+            'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:1024'],
+            'personal_id_photo' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:1024'],
 
             'student.guarantor_name' => 'required|string|max:255',
             'student.guarantor_gender' => 'required|in:male,female',
@@ -84,8 +86,8 @@ class StudentForm extends Component
             'student.personal_id' => 'required|string',
             'student.first_phone' => 'required|integer',
             'student.second_phone' => 'required|integer',
-            'photo' => ['required','image','mimes:jpg,jpeg,png,webp','max:1024'],
-            'personal_id_photo' => ['required','image','mimes:jpg,jpeg,png,webp','max:1024'],
+            'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:1024'],
+            'personal_id_photo' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:1024'],
         ], [], [
             'student.name' => 'الاسم الكامل',
             'student.gender' => 'الجنس',
@@ -111,7 +113,7 @@ class StudentForm extends Component
             'student.guarantor_work_address' => 'required|string',
             'guarantor_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
             'guarantor_personal_id_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
-        ],[],[
+        ], [], [
             'student.guarantor_name' => __('admin.users.guarantor_name'),
             'student.guarantor_gender' => __('admin.users.guarantor_gender'),
             'student.guarantor_first_phone' => __('admin.users.guarantor_first_phone'),
@@ -123,6 +125,9 @@ class StudentForm extends Component
             'guarantor_photo' => __('admin.users.guarantor_photo'),
             'guarantor_personal_id_photo' => __('admin.users.guarantor_personal_id_photo'),
         ]);
+
+        $this->student->payment_method = 'bankak';
+
         $this->currentStep = 3;
     }
 
@@ -136,7 +141,7 @@ class StudentForm extends Component
             'student.house_owner_personal_id' => 'required|string',
             'house_owner_personal_id_photo' => 'required|image|mimes:jpg,jpeg,png,webp|max:1024',
             'house_certificate_photo' => 'required|image|mimes:jpg,jpeg,png,webp|max:1024',
-        ],[],[
+        ], [], [
             'student.house_address' => __('admin.users.house_address'),
             'student.house_number' => __('admin.users.house_number'),
             'student.house_owner_phone' => __('admin.users.house_owner_phone'),
@@ -154,19 +159,51 @@ class StudentForm extends Component
             'student.payment_method' => 'required|in:fawry,bankak',
             'student.payment_number' => 'required|integer',
             'student.payment_date' => 'required|date',
-        ],[],[
+        ], [], [
             'student.payment_method' => __('admin.payments.payment_method'),
             'student.payment_number' => __('admin.payments.payment_number'),
             'student.payment_date' => __('admin.payments.payment_date'),
         ]);
-        $this->currentStep = 5;
+        // $this->currentStep = 5;
+        $this->save();
     }
 
     public function save()
     {
-        $this->student->addMedia(Image::make($this->student['photo'])->basePath())
-            ->usingName(Str::uuid())
-            ->toMediaCollection('student_photo');
+        return DB::transaction(function ($q) {
+
+            $student = collect($this->student)->except([
+                'photo',
+                'personal_id_photo',
+                'guarantor_photo',
+                'guarantor_personal_id_photo',
+                'house_owner_personal_id_photo',
+                'house_certificate_photo'
+            ]);
+
+            $student->put('type', User::TYPE_STUDENT);
+
+            $user = User::create($student->toArray());
+
+            $this->student->addMedia(Image::make($this->photo)->basePath())
+                ->usingName(Str::uuid())
+                ->toMediaCollection('student_photo');
+
+            $this->student->addMedia(Image::make($this->personal_id_photo)->basePath())
+                ->usingName(Str::uuid())
+                ->toMediaCollection('personal_id_photo');
+
+            $this->student->addMedia(Image::make($this->guarantor_photo)->basePath())
+                ->usingName(Str::uuid())
+                ->toMediaCollection('guarantor_photo');
+
+            $this->student->addMedia(Image::make($this->guarantor_personal_id_photo)->basePath())
+                ->usingName(Str::uuid())
+                ->toMediaCollection('guarantor_personal_id_photo');
+
+
+            session()->flush('success' , 'تم حفظ الطلب بنجاح سيتم مراسلتك بالتفاصيل في رقم الهاتف');
+        });
     }
 
     public function directToCorrectStep()
@@ -187,11 +224,16 @@ class StudentForm extends Component
             case 4:
                 $this->validatePaymentInfo();
                 break;
+
+            case 5:
+                $this->save();
+                break;
             default:
         }
     }
 
-    public function back() {
+    public function back()
+    {
         --$this->currentStep;
     }
 }

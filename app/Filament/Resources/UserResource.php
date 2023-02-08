@@ -63,11 +63,11 @@ class UserResource extends Resource
                                 TextInput::make('address')->label(__('admin.users.address'))->required(),
                                 TextInput::make('personal_id')->label(__('admin.users.personal_id'))->required(),
                                 SpatieMediaLibraryFileUpload::make('personal_id_photo')
-                                    ->collection('users')
+                                    ->collection('personal_id_photo')
                                     ->label(__('admin.users.personal_id'))
                                     ->required(),
                                 SpatieMediaLibraryFileUpload::make('student_photo')
-                                    ->collection('users')
+                                    ->collection('student_photo')
                                     ->label(__('admin.users.photo'))
                                     ->required(),
                             ])->columns(2),
@@ -88,7 +88,7 @@ class UserResource extends Resource
                                 TextInput::make('guarantor_work_company')->label(__('admin.users.guarantor_work_company'))->required(),
                                 TextInput::make('guarantor_work_address')->label(__('admin.users.guarantor_work_address'))->required(),
                                 SpatieMediaLibraryFileUpload::make('guarantor_personal_id_photo')
-                                    ->collection('guarantor_personal_id')
+                                    ->collection('guarantor_personal_id_photo')
                                     ->label(__('admin.users.personal_id'))
                                     ->required(),
                                 SpatieMediaLibraryFileUpload::make('guarantor_photo')
