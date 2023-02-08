@@ -4,24 +4,6 @@
             <div class="header-text httac htvam">
                 <h1 id="header1" class="form-header">استمارة الاشتراك</h1>
             </div>
-            @if (session()->has('success'))
-                
-            <h3 style="
-            text-align:center;
-            color: #155724;
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-            position: relative;
-            padding: .75rem 1.25rem;
-            margin-bottom: 1rem;
-            border: 1px solid transparent;
-            border-top-color: transparent;
-            border-right-color: transparent;
-            border-bottom-color: transparent;
-            border-left-color: transparent;
-            border-radius: .25rem;
-            "></h3>
-            @endif
 
         </div>
     </li>
@@ -607,7 +589,9 @@
             </span>
         </span>
     </div>
+
     @elseif($currentStep == 4)
+
     <li class="form-line" id="li3" style="text-align:right;">
         <div id="div1" class="form-input-wide">
             <div class="form-address-table jsTest-addressField">
@@ -684,9 +668,28 @@
             </div>
         </div>
     </li>
+
+    @elseif($currentStep == 5)
+       
+    <h4 style="
+    text-align:center;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: .25rem;
+    ">.تم تسجيلك طلبك بنجاح , سيتم ارسال رسالة التأكيد وموعد الحضور لرقم هاتفك </h4>
     @endif
 
     {{-- buttons --}}
+    @if($currentStep != 5)
     <li id="li6" class="form-input-wide" data-type="control_pagebreak">
         <div class="form-pagebreak" data-component="pagebreak">
             <div class="form-pagebreak-next-container">
@@ -707,4 +710,5 @@
             <div style="clear:both" class="pageInfo form-sub-label" id="div4"></div>
         </div>
     </li>
+    @endif
 </ul>

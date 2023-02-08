@@ -157,7 +157,7 @@ class StudentForm extends Component
     {
         $this->validate([
             'student.payment_method' => 'required|in:fawry,bankak',
-            'student.payment_number' => 'required|integer',
+            'student.payment_number' => 'required|integer|unique:users,payment_number',
             'student.payment_date' => 'required|date',
         ], [], [
             'student.payment_method' => __('admin.payments.payment_method'),
@@ -202,7 +202,18 @@ class StudentForm extends Component
                 ->toMediaCollection('guarantor_personal_id_photo');
 
 
-            session()->flush('success' , 'تم حفظ الطلب بنجاح سيتم مراسلتك بالتفاصيل في رقم الهاتف');
+                $this->currentStep = 5;
+
+                $this->user == new User();
+                $this->photo = null;
+                $this->personal_id_photo = null;
+                $this->guarantor_photo = null;
+                $this->guarantor_personal_id_photo = null;
+                $this->house_certificate_photo = null;
+                $this->house_owner_personal_id_photo = null;
+
+            
+            // session()->flush('success' ,);
         });
     }
 
@@ -225,9 +236,6 @@ class StudentForm extends Component
                 $this->validatePaymentInfo();
                 break;
 
-            case 5:
-                $this->save();
-                break;
             default:
         }
     }
