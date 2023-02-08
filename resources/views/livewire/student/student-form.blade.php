@@ -134,13 +134,10 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model='student.photo' type="file" id="input8"
-                                                name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
-                                                data-imagevalidate="yes"
-                                                data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
-                                                data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
-                                                data-component="fileupload" aria-label="Browse Files" />
-                                            @error('student.photo')
+                                            <input wire:model='photo' type="file"
+                                                class="form-upload-multiple" data-imagevalidate="yes"
+                                                 aria-label="Browse Files" />
+                                            @error('photo')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -177,13 +174,8 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model='student.personal_id_photo' type="file" id="input9"
-                                                name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
-                                                data-imagevalidate="yes"
-                                                data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
-                                                data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
-                                                data-component="fileupload" aria-label="Browse Files" />
-                                            @error('student.personal_id_photo')
+                                            <input wire:model='personal_id_photo' type="file" aria-label="Browse Files" />
+                                            @error('personal_id_photo')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -329,13 +321,13 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model.defer='student.guarantor_photo' type="file" id="input8"
-                                                name="q10_pleaseUpload[]" multiple="" class="form-upload-multiple"
+                                            <input wire:model='guarantor_photo' type="file" id="input8"
+                                                class="form-upload-multiple"
                                                 data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
-                                            @error('student.guarantor_photo')
+                                            @error('guarantor_photo')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -350,7 +342,51 @@
                 </li>
             </span>
         </span>
-        <span class="form-address-line form-address-state-line jsTest-address-lineField ">
+        <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+            <span class="form-sub-label-container" style="vertical-align:top">
+                <li class="form-line" data-type="control_fileupload" id="li4">
+                    <label class="form-label form-label-top form-label-auto" id="label6" for="input_10">  الرجاء تحميل
+                        الرقم
+                        الوطني</label>
+                    <div id="div2" class="form-input-wide" data-layout="full">
+                        <div class="jfQuestion-fields" data-wrapper-react="true">
+                            <div class="jfField isFilled">
+                                <div class="jfUpload-wrapper">
+                                    <div class="jfUpload-container">
+
+                                        <div style="margin-left:225px" class="jfUpload-button-container">
+                                            <div class="jfUpload-button" aria-hidden="true" tabindex="0"
+                                                style="display:none" data-version="v2">Browse Files
+                                                <div class="jfUpload-heading forDesktop">Drag and drop files here
+                                                </div>
+                                                <div class="jfUpload-heading forMobile">اختر الملف</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding-left:120px" class="jfUpload-files-container">
+                                        <div class="validate[multipleUpload]">
+                                            <input wire:model='guarantor_personal_id_photo' type="file" id="input8"
+                                                class="form-upload-multiple"
+                                                data-imagevalidate="yes"
+                                                data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
+                                                data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
+                                                data-component="fileupload" aria-label="Browse Files" />
+                                            @error('guarantor_personal_id_photo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-wrapper-react="true"></div>
+                            </div>
+                            <span style="display:none" class="cancelText">Cancel</span>
+                            <span style="display:none" class="ofText">of</span>
+                        </div>
+                    </div>
+                </li>
+            </span>
+        </span>
+        {{-- <span class="form-address-line form-address-state-line jsTest-address-lineField ">
             <span class="form-sub-label-container" style="vertical-align:top">
                 <li class="form-line" data-type="control_fileupload" id="li5">
                     <label class="form-label form-label-top form-label-auto" id="label7" for="input_10"> الرجاء تحميل
@@ -372,13 +408,12 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model.defer='student.guarantor_personal_id_photo' type="file"
-                                                id="input9" name="q10_pleaseUpload[]" multiple=""
+                                            <input wire:model='guarantor_personal_id_photo' type="file"
                                                 class="form-upload-multiple" data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
-                                            @error('student.guarantor_personal_id_photo')
+                                            @error('guarantor_personal_id_photo')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -392,7 +427,7 @@
                     </div>
                 </li>
             </span>
-        </span>
+        </span> --}}
     </div>
 
     @elseif($currentStep == 3)
@@ -451,7 +486,7 @@
                     </span>
                     <span class="form-address-line form-address-state-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model.defer='student.house_owner_personal_id' style="margin-left: 22px"
+                            <input wire:model='student.house_owner_personal_id' style="margin-left: 22px"
                                 type="text" id="input3_8" name="q34_address[state]"
                                 class="form-textbox form-address-state" />
                             <label class="form-sub-label" id="label3_6" style="min-height:13px"
@@ -489,12 +524,15 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input type="file" id="input3_9" name="q10_pleaseUpload[]" multiple=""
+                                            <input type="file" wire:model='student.house_certificate_photo'
                                                 class="form-upload-multiple" data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
                                         </div>
+                                        @error('student.house_certificate_photo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div data-wrapper-react="true"></div>
@@ -527,12 +565,15 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input type="file" id="input3_10" name="q10_pleaseUpload[]" multiple=""
+                                            <input type="file" wire:model='house_owner_personal_id_photo'
                                                 class="form-upload-multiple" data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
                                         </div>
+                                        @error('house_owner_personal_id_photo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div data-wrapper-react="true"></div>

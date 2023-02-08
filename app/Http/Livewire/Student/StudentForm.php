@@ -15,6 +15,13 @@ class StudentForm extends Component
 
     public User $student;
     public $currentStep = 1;
+    public $photo;
+    public $personal_id_photo;
+    public $guarantor_photo;
+    public $guarantor_personal_id_photo;
+    public $house_owner_personal_id_photo;
+    public $house_certificate_photo;
+
 
     public function render()
     {
@@ -37,8 +44,8 @@ class StudentForm extends Component
             'student.personal_id' => 'required|string',
             'student.first_phone' => 'required|integer',
             'student.second_phone' => 'nullable|integer',
-            'student.photo' => 'required|file',
-            'student.personal_id_photo' => 'required|file',
+            'photo' => ['required','image','mimes:jpg,jpeg,png,webp','max:1024'],
+            'personal_id_photo' => ['required','image','mimes:jpg,jpeg,png,webp','max:1024'],
 
             'student.guarantor_name' => 'required|string|max:255',
             'student.guarantor_gender' => 'required|in:male,female',
@@ -48,14 +55,16 @@ class StudentForm extends Component
             'student.guarantor_job' => 'required|string',
             'student.guarantor_work_company' => 'required|string',
             'student.guarantor_work_address' => 'required|string',
-            'student.guarantor_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
-            'student.guarantor_personal_id_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
+            'student.guarantor_photo' => 'required|image|mimes:jpg,jpeg,png|max:1024',
+            'student.guarantor_personal_id_photo' => 'required|image|mimes:jpg,jpeg,png|max:1024',
 
             'student.house_number' => 'required|integer',
             'student.house_address' => 'required|string',
             'student.house_owner' => 'required|string',
             'student.house_owner_phone' => 'required|integer',
             'student.house_owner_personal_id' => 'required|string',
+            'house_owner_personal_id_photo' => 'required|image|mimes:jpg,jpeg,png,web|max:1024',
+            'house_certificate_photo' => 'required|image|mimes:jpg,jpeg,png,web|max:1024',
         ];
     }
 
@@ -71,16 +80,16 @@ class StudentForm extends Component
             'student.personal_id' => 'required|string',
             'student.first_phone' => 'required|integer',
             'student.second_phone' => 'required|integer',
-            'student.photo' => ['required','file','max:1024'],
-            'student.personal_id_photo' => ['required','file','max:1024'],
+            'photo' => ['required','image','mimes:jpg,jpeg,png,webp','max:1024'],
+            'personal_id_photo' => ['required','image','mimes:jpg,jpeg,png,webp','max:1024'],
         ], [], [
             'student.name' => 'الاسم الكامل',
             'student.gender' => 'الجنس',
             'student.personal_id' => ' الرقم الوطني',
             'student.first_phone' => 'رقم الهاتف 1',
             'student.second_phone' => 'رقم الهاتف 2',
-            // 'student.photo' => __('admin.users.photo'),
-            // 'student.personal_id_photo' => __('admin.users.personal_id_photo'),
+            'photo' => __('admin.users.photo'),
+            'personal_id_photo' => __('admin.users.personal_id_photo'),
         ]);
         $this->currentStep = 2;
     }
@@ -96,8 +105,8 @@ class StudentForm extends Component
             'student.guarantor_job' => 'required|string',
             'student.guarantor_work_company' => 'required|string',
             'student.guarantor_work_address' => 'required|string',
-            'student.guarantor_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
-            'student.guarantor_personal_id_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
+            'guarantor_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
+            'guarantor_personal_id_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
         ],[],[
             'student.guarantor_name' => __('admin.users.guarantor_name'),
             'student.guarantor_gender' => __('admin.users.guarantor_gender'),
@@ -107,8 +116,8 @@ class StudentForm extends Component
             'student.guarantor_job' => __('admin.users.users'),
             'student.guarantor_work_company' => __('admin.users.guarantor_work_company'),
             'student.guarantor_work_address' => __('admin.users.guarantor_work_address'),
-            'student.guarantor_photo' => __('admin.users.guarantor_photo'),
-            'student.guarantor_personal_id_photo' => __('admin.users.guarantor_personal_id_photo'),
+            'guarantor_photo' => __('admin.users.guarantor_photo'),
+            'guarantor_personal_id_photo' => __('admin.users.guarantor_personal_id_photo'),
         ]);
         $this->currentStep = 3;
     }
@@ -121,6 +130,8 @@ class StudentForm extends Component
             'student.house_owner' => 'required|string',
             'student.house_owner_phone' => 'required|integer',
             'student.house_owner_personal_id' => 'required|string',
+            'house_owner_personal_id_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
+            'house_certificate_photo' => 'required|file|mimes:jpg,jpeg,png|max:1024',
         ],[],[
             'student.house_address' => __('admin.users.house_address'),
             'student.house_number' => __('admin.users.house_number'),
