@@ -155,9 +155,9 @@ class StudentForm extends Component
             'student.payment_number' => 'required|integer',
             'student.payment_date' => 'required|date',
         ],[],[
-            'student.payment_method' => __('admin.users.payment_method'),
-            'student.payment_number' => __('admin.users.payment_number'),
-            'student.payment_date' => __('admin.users.payment_date'),
+            'student.payment_method' => __('admin.payments.payment_method'),
+            'student.payment_number' => __('admin.payments.payment_number'),
+            'student.payment_date' => __('admin.payments.payment_date'),
         ]);
         $this->currentStep = 5;
     }
@@ -184,6 +184,9 @@ class StudentForm extends Component
                 $this->validateHousingInfo();
                 break;
 
+            case 4:
+                $this->validatePaymentInfo();
+                break;
             default:
         }
     }

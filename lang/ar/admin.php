@@ -75,6 +75,9 @@ return [
     'payment_status' => 'حالة الدفع',
     Payment::STATUS_PAID => 'مدفوع',
     Payment::STATUS_REFUSED => 'متعسر',
+    'payment_method' => 'وسيلة الدفع',
+    'payment_date' => 'تاريخ الدفع',
+    'payment_number' => 'رقم العملية',
   ],
 
   'site' => [
