@@ -134,9 +134,8 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model='photo' type="file"
-                                                class="form-upload-multiple" data-imagevalidate="yes"
-                                                 aria-label="Browse Files" />
+                                            <input wire:model='photo' type="file" class="form-upload-multiple"
+                                                data-imagevalidate="yes" aria-label="Browse Files" />
                                             @error('photo')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -174,7 +173,8 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input wire:model='personal_id_photo' type="file" aria-label="Browse Files" />
+                                            <input wire:model='personal_id_photo' type="file"
+                                                aria-label="Browse Files" />
                                             @error('personal_id_photo')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -322,8 +322,7 @@
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
                                             <input wire:model='guarantor_photo' type="file" id="input8"
-                                                class="form-upload-multiple"
-                                                data-imagevalidate="yes"
+                                                class="form-upload-multiple" data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
@@ -345,7 +344,7 @@
         <span class="form-address-line form-address-city-line jsTest-address-lineField ">
             <span class="form-sub-label-container" style="vertical-align:top">
                 <li class="form-line" data-type="control_fileupload" id="li4">
-                    <label class="form-label form-label-top form-label-auto" id="label6" for="input_10">  الرجاء تحميل
+                    <label class="form-label form-label-top form-label-auto" id="label6" for="input_10"> الرجاء تحميل
                         الرقم
                         الوطني</label>
                     <div id="div2" class="form-input-wide" data-layout="full">
@@ -366,8 +365,7 @@
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
                                             <input wire:model='guarantor_personal_id_photo' type="file" id="input8"
-                                                class="form-upload-multiple"
-                                                data-imagevalidate="yes"
+                                                class="form-upload-multiple" data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
@@ -486,9 +484,8 @@
                     </span>
                     <span class="form-address-line form-address-state-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model='student.house_owner_personal_id' style="margin-left: 22px"
-                                type="text" id="input3_8" name="q34_address[state]"
-                                class="form-textbox form-address-state" />
+                            <input wire:model='student.house_owner_personal_id' style="margin-left: 22px" type="text"
+                                id="input3_8" name="q34_address[state]" class="form-textbox form-address-state" />
                             <label class="form-sub-label" id="label3_6" style="min-height:13px"
                                 aria-hidden="false">الرقم الوطني لمالك المنزل</label>
                         </span>
@@ -524,13 +521,13 @@
                                     </div>
                                     <div style="padding-left:120px" class="jfUpload-files-container">
                                         <div class="validate[multipleUpload]">
-                                            <input type="file" wire:model='student.house_certificate_photo'
+                                            <input type="file" wire:model='house_certificate_photo'
                                                 class="form-upload-multiple" data-imagevalidate="yes"
                                                 data-file-accept="pdf, doc, docx, xls, xlsx, csv, txt, rtf, html, zip, mp3, wma, mpg, flv, avi, jpg, jpeg, png, gif"
                                                 data-file-maxsize="10854" data-file-minsize="0" data-file-limit="0"
                                                 data-component="fileupload" aria-label="Browse Files" />
                                         </div>
-                                        @error('student.house_certificate_photo')
+                                        @error('house_certificate_photo')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -572,7 +569,7 @@
                                                 data-component="fileupload" aria-label="Browse Files" />
                                         </div>
                                         @error('house_owner_personal_id_photo')
-                                            <div class="text-danger">{{ $message }}</div>
+                                        <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
