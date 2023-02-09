@@ -32,6 +32,7 @@ use App\Filament\Resources\OrderResource\Pages\ListOrders;
 use App\Filament\Resources\OrderResource\Pages\SendMessage;
 use App\Filament\Resources\OrderResource\RelationManagers\UserRelationManager;
 use App\Filament\Resources\OrderResource\Pages\CreateOrder as PagesCreateOrder;
+use App\Filament\Resources\OrderResource\RelationManagers\MessagesRelationManager;
 use App\Filament\Resources\OrderResource\RelationManagers\ProductRelationManager;
 use App\Filament\Resources\OrderResource\RelationManagers\PaymentsRelationManager;
 
@@ -110,6 +111,7 @@ class OrderResource extends Resource
             UserRelationManager::class,
             ProductRelationManager::class,
             PaymentsRelationManager::class,
+            MessagesRelationManager::class,
         ];
     }
 

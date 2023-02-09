@@ -14,7 +14,15 @@ class MessagesRelationManager extends RelationManager
 {
     protected static string $relationship = 'messages';
 
+    protected static ?string $label = 'رسالة';
+
+    protected static ?string $pluralLabel = 'الرسائل';
+
     protected static ?string $recordTitleAttribute = 'number';
+
+
+
+
 
     public static function form(Form $form): Form
     {
@@ -30,20 +38,20 @@ class MessagesRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('number'),
+                Tables\Columns\TextColumn::make('number')->label('رقم الهاتف'),
             ])
             ->filters([
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                // Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                // Tables\Actions\EditAction::make(),
+                // Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                // Tables\Actions\DeleteBulkAction::make(),
             ]);
     }    
 }
