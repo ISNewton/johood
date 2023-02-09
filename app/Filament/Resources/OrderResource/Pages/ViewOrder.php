@@ -48,13 +48,13 @@ class ViewOrder extends ViewRecord
             'username' => 'عاصم الطيب',
             'password' => 'E-learning123',
             'sender' => 'Ashraf Alhaj',
-            'numbers' => 249908783487,
+            'numbers' => $data['phone'],
             'text' => $data['message'],
         ]);
 
         Notification::make() 
         ->title('تم ارسال الرسالة بنجاح')
         ->success()
-        ->send(); 
+        ->send();
     }
 }
