@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use App\Filament\Resources\OrderResource;
+use App\Models\Message;
 use Filament\Forms\Components\RichEditor;
 
 class ViewOrder extends ViewRecord
@@ -48,8 +49,14 @@ class ViewOrder extends ViewRecord
             'username' => 'عاصم الطيب',
             'password' => 'E-learning123',
             'sender' => 'Ashraf Alhaj',
-            'numbers' => $data['phone'],
+            'numbers' => $data['phone'], //249995243781
             'text' => $data['message'],
+        ]);
+
+        Message::create([
+            'order_id' => $this->record->id,
+            'message' => $data['message'],
+            'phone' => $data['phone'],
         ]);
 
         Notification::make() 

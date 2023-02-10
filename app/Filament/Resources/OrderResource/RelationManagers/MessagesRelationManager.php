@@ -3,12 +3,13 @@
 namespace App\Filament\Resources\OrderResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Resources\Form;
-use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Resources\RelationManagers\RelationManager;
 
 class MessagesRelationManager extends RelationManager
 {
@@ -18,7 +19,7 @@ class MessagesRelationManager extends RelationManager
 
     protected static ?string $pluralLabel = 'الرسائل';
 
-    protected static ?string $recordTitleAttribute = 'number';
+    protected static ?string $recordTitleAttribute = 'phone';
 
 
 
@@ -28,7 +29,7 @@ class MessagesRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('number')
+                Forms\Components\TextInput::make('phone')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -38,7 +39,9 @@ class MessagesRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('number')->label('رقم الهاتف'),
+                Tables\Columns\TextColumn::make('phone')->label('رقم الهاتف'),
+                Tables\Columns\TextColumn::make('message')->html()->label('الرسالة'),
+                TextColumn::make('created_at')->since()->label(' تاريخ الارسال'),
             ])
             ->filters([
                 //
