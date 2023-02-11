@@ -24,7 +24,15 @@ class HomeController extends Controller
         return view('student.products',compact('products'));
     }
 
-    public function save($product) {
-        dd($product);
+    public function save(Product $product) {
+        // dd($product);
+        $this->validate(request(),[
+            'installment_type' => 'required',
+            'with_sim_card' => 'sometimes',
+        ]);
+        
+
+        session()->put('product_id',$product->id);
+        return redirect()->route('form');
     }
 }

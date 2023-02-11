@@ -79,7 +79,7 @@
 
   <div class="container" style="margin-top:100px">
     <div class="single-product">
-      <form action="{{ route('form.save') }}" method="POST">
+      <form action="{{ route('form.save',$product->id) }}" method="POST">
         @csrf
         <div class="row">
           <div class="col-6">
@@ -153,7 +153,7 @@
           <img src="{{ $media->getUrl() }}" alt="" class="image-list">
           @endforeach
         </div>
-        <button class="favorite styled" type="button">
+        <button type="submit" class="favorite styled" type="button">
           اشتراك
         </button>
       </form>

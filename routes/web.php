@@ -24,5 +24,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
+Route::post('/save_product/{product}', [App\Http\Controllers\HomeController::class, 'save'])->name('form.save');
 Route::get('/form', [App\Http\Controllers\HomeController::class, 'form'])->name('form');
-Route::post('/form', [App\Http\Controllers\HomeController::class, 'save'])->name('form.save');
