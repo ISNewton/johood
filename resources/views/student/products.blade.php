@@ -119,14 +119,18 @@
 
                     {{-- <label for="black" class="black"></label> --}}
                     <h4 style="display:inline-block">القسط الشهري ل 24 شهر 20 ألف</h4>
-                    <input type="radio" name="color" value="black">
+                    <input type="radio" name="installment_type" value="24">
 
                   </div>
                   <div>
                     <h4 style="display:inline-block">القسط الشهري ل 12 شهر 28 ألف</h4>
-                    <input type="radio" name="color" value="blue">
+                    <input type="radio" name="installment_type" value="12">
                     {{-- <input type="radio" name="color" value="blue" class="color-input"> --}}
                     {{-- <label for="blue" class="blue"></label> --}}
+                    @error('installment_type')
+                      <span style="color:red">{{ $message }}</span>
+                        
+                    @enderror
                   </div>
 
                 </div>
@@ -134,7 +138,7 @@
                 <fieldset>
                   <legend style="font-size: 18px; font-weight: 500;">اذا كنت ترغب في امتلاك شريحة بيانات ومكالمات</legend>
                   <div>
-                    <input type="checkbox" id="coding1" name="interest1" value="coding1" />
+                    <input type="checkbox" id="coding1" name="with_sim_card" value="true" />
                     <label for="coding1">شريحة بيانات مخفضة بنسبة 60% ومكالمات مجانية داخل الشبكة وتخفيض 60% خارج
                       الشبكة</label>
                   </div>

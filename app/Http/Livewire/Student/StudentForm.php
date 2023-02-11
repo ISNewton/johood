@@ -3,12 +3,14 @@
 namespace App\Http\Livewire\Student;
 
 use App\Models\User;
-use HtmlSanitizer\Extension\Table\NodeVisitor\ThNodeVisitor;
-use Illuminate\Support\Facades\DB;
+use App\Models\Order;
+use App\Models\Product;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use HtmlSanitizer\Extension\Table\NodeVisitor\ThNodeVisitor;
 
 class StudentForm extends Component
 {
@@ -184,6 +186,16 @@ class StudentForm extends Component
             $student->put('type', User::TYPE_STUDENT);
 
             $user = User::create($student->toArray());
+
+            $product = Product::find(session()->get('product_id'));
+            
+            Order::create([
+                'user_id' => $user->id,
+                'product_id' => $product->id,
+                'quantity' => 1,
+                'price' => $product->price,
+                'status' => Order::STATUS_PENDING,
+            ]);
 
             $this->student->addMedia(Image::make($this->photo)->basePath())
                 ->usingName(Str::uuid())

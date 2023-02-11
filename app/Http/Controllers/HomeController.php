@@ -30,7 +30,6 @@ class HomeController extends Controller
             'installment_type' => 'required',
             'with_sim_card' => 'sometimes',
         ]);
-        
 
         session()->put('product_id',$product->id);
         return redirect()->route('form');
