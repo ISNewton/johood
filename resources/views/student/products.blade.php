@@ -68,7 +68,6 @@
                 </div>
               </fieldset>
               <span class="divider"></span>
-             
             </div>
           </div>
         </div>

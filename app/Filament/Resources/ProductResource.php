@@ -52,7 +52,7 @@ class ProductResource extends Resource
                 Checkbox::make('is_visible')->label(__('admin.products.is_visible'))->default(true),
                 RichEditor::make('description')->label(__('admin.products.description'))->required()->columnSpanFull(3),
                 SpatieMediaLibraryFileUpload::make('images')
-                    ->collection('products')
+                    ->collection(Product::MEDIA_COLLECTION)
                     ->label(__('admin.products.images'))
                     ->required()
                     ->multiple()

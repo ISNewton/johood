@@ -15,10 +15,10 @@ class HomeController extends Controller
     public function products() {
         $products = Product::with([
             'media' => function ( $query) {
-                $query->where('collection_name', 'products');
+                $query->where('collection_name', Product::MEDIA_COLLECTION);
             }
         ])->where('is_visible',true)->get();
-        dd($products->first()->media());
+        dd($products->first());
         return view('student.products',compact('products'));
     }
 }

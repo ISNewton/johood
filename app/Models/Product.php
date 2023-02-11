@@ -25,6 +25,8 @@ class Product extends Model implements HasMedia
         'is_visible' => 'boolean',
     ];
 
+    const MEDIA_COLLECTION = 'products';
+
     public function users() : BelongsToMany
     {
         return $this->belongsToMany(User::class,'orders');
