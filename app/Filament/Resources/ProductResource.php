@@ -64,9 +64,9 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')->label(__('admin.products.title')),
+                Tables\Columns\TextColumn::make('title')->label(__('admin.products.title'))->searchable(),
                 Tables\Columns\TextColumn::make('quantity')->label(__('admin.products.quantity'))->sortable(),
-                Tables\Columns\TextColumn::make('price')->label(__('admin.products.quantity'))->sortable(),
+                Tables\Columns\TextColumn::make('price')->label(__('admin.products.price'))->sortable(),
                 IconColumn::make('is_visible')->label(__('admin.products.is_visible'))->boolean(),
 
             ])

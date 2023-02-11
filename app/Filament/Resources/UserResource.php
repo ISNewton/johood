@@ -132,7 +132,7 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->label(__('admin.users.name')),
+                Tables\Columns\TextColumn::make('name')->label(__('admin.users.name'))->searchable(),
                 Tables\Columns\TextColumn::make('personal_id')->label(__('admin.users.personal_id'))->sortable(),
                 SpatieMediaLibraryImageColumn::make('student_photo')->collection('users')->label(__('admin.users.photo'))
             ])
