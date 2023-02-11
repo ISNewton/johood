@@ -77,9 +77,10 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('product.title')->label(__('admin.products.title')),
-                TextColumn::make('user.name')->label(__('admin.users.user')),
-                TextColumn::make('created_at')->since()->label(__('admin.site.created_at')),
+                TextColumn::make('product.title')->label('اسم المنتج'),
+                TextColumn::make('user.payment_number')->label( __('admin.payments.payment_number'))->searchable(),
+                TextColumn::make('user.name')->label(__('admin.users.user'))->searchable(),
+                TextColumn::make('created_at')->since()->label(__('admin.site.created_at'))->sortable(),
                 BadgeColumn::make('status')->label(__('admin.orders.status'))
                     ->enum([
                         Order::STATUS_PENDING => 'مقدم',
@@ -99,6 +100,7 @@ class OrderResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

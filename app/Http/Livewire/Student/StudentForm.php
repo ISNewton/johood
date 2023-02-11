@@ -160,7 +160,7 @@ class StudentForm extends Component
         $this->validate([
             'student.payment_method' => 'required|in:fawry,bankak',
             'student.payment_number' => 'required|integer|unique:users,payment_number',
-            'student.payment_date' => 'required|date',
+            'student.payment_date' => 'required|date|before_or_equal:today',
         ], [], [
             'student.payment_method' => __('admin.payments.payment_method'),
             'student.payment_number' => __('admin.payments.payment_number'),
@@ -188,13 +188,15 @@ class StudentForm extends Component
             $user = User::create($student->toArray());
 
             $product = Product::find(session()->get('product_id'));
-            
+
             Order::create([
                 'user_id' => $user->id,
                 'product_id' => $product->id,
                 'quantity' => 1,
                 'price' => $product->price,
                 'status' => Order::STATUS_PENDING,
+                'installment_type' => session()->get('installment_type'),
+                'with_sim_card' => session()->get('with_sim_card')
             ]);
 
             $this->student->addMedia(Image::make($this->photo)->basePath())
@@ -214,18 +216,15 @@ class StudentForm extends Component
                 ->toMediaCollection('guarantor_personal_id_photo');
 
 
-                $this->currentStep = 5;
+            $this->currentStep = 5;
 
-                $this->user == new User();
-                $this->photo = null;
-                $this->personal_id_photo = null;
-                $this->guarantor_photo = null;
-                $this->guarantor_personal_id_photo = null;
-                $this->house_certificate_photo = null;
-                $this->house_owner_personal_id_photo = null;
-
-            
-            // session()->flush('success' ,);
+            $this->student == new User();
+            $this->photo = null;
+            $this->personal_id_photo = null;
+            $this->guarantor_photo = null;
+            $this->guarantor_personal_id_photo = null;
+            $this->house_certificate_photo = null;
+            $this->house_owner_personal_id_photo = null;
         });
     }
 

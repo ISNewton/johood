@@ -20,18 +20,21 @@ class HomeController extends Controller
         ])
         ->where('is_visible',true)
         ->get();
-        // dd($products->first());
+
         return view('student.products',compact('products'));
     }
 
     public function save(Product $product) {
-        // dd($product);
+
         $this->validate(request(),[
             'installment_type' => 'required',
             'with_sim_card' => 'sometimes',
         ]);
 
         session()->put('product_id',$product->id);
+        session()->put('installment_type',request()->get('installment_type'));
+        session()->put('with_sim_card',!!request()->get('with_sim_card'));
+
         return redirect()->route('form');
     }
 }

@@ -19,6 +19,8 @@ class Order extends Model
         'quantity',
         'price',
         'status',
+        'installment_type',
+        'with_sim_card',
     ];
 
     protected $casts = [
