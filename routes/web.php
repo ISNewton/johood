@@ -23,4 +23,5 @@ use Illuminate\Support\Facades\Route;
 //     Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
 // });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('form');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
+Route::get('/form', [App\Http\Controllers\HomeController::class, 'form'])->name('form');
