@@ -17,8 +17,14 @@ class HomeController extends Controller
             'media' => function ( $query) {
                 $query->where('collection_name', Product::MEDIA_COLLECTION);
             }
-        ])->where('is_visible',true)->get();
-        dd($products->first());
+        ])
+        ->where('is_visible',true)
+        ->get();
+        // dd($products->first());
         return view('student.products',compact('products'));
+    }
+
+    public function save($product) {
+        dd($product);
     }
 }
