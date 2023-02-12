@@ -225,6 +225,11 @@ class StudentForm extends Component
             $this->guarantor_personal_id_photo = null;
             $this->house_certificate_photo = null;
             $this->house_owner_personal_id_photo = null;
+
+            session()->forget('product_id');
+            session()->forget('installment_type');
+            session()->forget('with_sim_card');
+            
         });
     }
 

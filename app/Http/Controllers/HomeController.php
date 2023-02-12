@@ -9,6 +9,10 @@ class HomeController extends Controller
 {
     public function form()
     {
+        if(!session()->has('product_id')) {
+            return redirect()->route('products');
+        }
+
         return view('student.form');
     }
 
