@@ -19,6 +19,8 @@ class Product extends Model implements HasMedia
         'quantity',
         'price',
         'is_visible',
+        'price_for_12_months',
+        'price_for_24_months',
     ];
 
     protected $casts = [

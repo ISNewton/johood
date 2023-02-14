@@ -48,7 +48,8 @@ class ProductResource extends Resource
             ->schema([
                 TextInput::make('title')->label(__('admin.products.title'))->required(),
                 TextInput::make('quantity')->label(__('admin.products.quantity'))->required()->numeric(),
-                TextInput::make('price')->label(__('admin.products.price'))->required()->numeric(),
+                TextInput::make('price_for_12_months')->label(__('admin.products.price_for_12_months'))->required()->numeric(),
+                TextInput::make('price_for_24_months')->label(__('admin.products.price_for_24_months'))->required()->numeric(),
                 Checkbox::make('is_visible')->label(__('admin.products.is_visible'))->default(true),
                 RichEditor::make('description')->label(__('admin.products.description'))->required()->columnSpanFull(3),
                 SpatieMediaLibraryFileUpload::make('images')

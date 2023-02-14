@@ -13,6 +13,8 @@ return [
     'images' => 'الصور',
     'description' => 'الوصف',
     'is_visible' => 'متاح',
+    'price_for_12_months' => 'السعر لمدة 12 شهر',
+    'price_for_24_months' => 'السعر لمدة 24 شهر',
   ],
   'users' => [
     'users' => ' المستخدمين',
