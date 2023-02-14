@@ -115,22 +115,18 @@
                 <h4>اختيار طريقة التقسيط</h4>
                 <div class="color-layout" style="flex-direction:column">
                   {{-- <input type="radio" name="color" value="black" class="color-input"> --}}
+                
                   <div>
-
-                    {{-- <label for="black" class="black"></label> --}}
-                    <h4 style="display:inline-block">القسط الشهري ل 24 شهر 20 ألف</h4>
-                    <input type="radio" name="installment_type" value="24">
-
-                  </div>
-                  <div>
-                    <h4 style="display:inline-block">القسط الشهري ل 12 شهر 28 ألف</h4>
+                    <h4 style="display:inline-block">القسط الشهري ل 12 شهر {{ $product->price_for_12_months }}  ألف</h4>
                     <input type="radio" name="installment_type" value="12">
-                    {{-- <input type="radio" name="color" value="blue" class="color-input"> --}}
-                    {{-- <label for="blue" class="blue"></label> --}}
                     @error('installment_type')
                       <span style="color:red">{{ $message }}</span>
                         
                     @enderror
+                  </div>
+                  <div>
+                    <h4 style="display:inline-block">القسط الشهري ل 24 شهر {{ $product->price_for_24_months }} ألف</h4>
+                    <input type="radio" name="installment_type" value="24">
                   </div>
 
                 </div>

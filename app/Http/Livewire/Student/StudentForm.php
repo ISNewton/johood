@@ -99,7 +99,7 @@ class StudentForm extends Component
             'photo' => __('admin.users.photo'),
             'personal_id_photo' => __('admin.users.personal_id_photo'),
         ]);
-        $this->currentStep = 2;
+        $this->currentStep = 3;
     }
 
     public function validateGuarantorInfo()
@@ -130,7 +130,7 @@ class StudentForm extends Component
 
         $this->student->payment_method = 'bankak';
 
-        $this->currentStep = 3;
+        $this->currentStep = 4;
     }
 
     public function validateHousingInfo()
@@ -152,7 +152,8 @@ class StudentForm extends Component
             'house_owner_personal_id_photo' => __('admin.users.house_owner_personal_id_photo'),
             'house_certificate_photo' => __('admin.users.house_certificate_photo'),
         ]);
-        $this->currentStep = 4;
+        $this->save();
+
     }
 
     public function validatePaymentInfo()
@@ -166,8 +167,7 @@ class StudentForm extends Component
             'student.payment_number' => __('admin.payments.payment_number'),
             'student.payment_date' => __('admin.payments.payment_date'),
         ]);
-        // $this->currentStep = 5;
-        $this->save();
+        $this->currentStep = 2;
     }
 
     public function save()
@@ -193,7 +193,7 @@ class StudentForm extends Component
                 'user_id' => $user->id,
                 'product_id' => $product->id,
                 'quantity' => 1,
-                'price' => $product->price,
+                'price' => session()->get('installment_type') == 12 ? $product->price_for_12_months : $product->price_for_24_months,
                 'status' => Order::STATUS_PENDING,
                 'installment_type' => session()->get('installment_type'),
                 'with_sim_card' => session()->get('with_sim_card')
@@ -237,19 +237,18 @@ class StudentForm extends Component
     {
         switch ($this->currentStep) {
             case 1:
+                $this->validatePaymentInfo();
+                break;
+            case 2:
                 $this->validatePersonalInfo();
                 break;
 
-            case 2:
+            case 3:
                 $this->validateGuarantorInfo();
                 break;
 
-            case 3:
-                $this->validateHousingInfo();
-                break;
-
             case 4:
-                $this->validatePaymentInfo();
+                $this->validateHousingInfo();
                 break;
 
             default:
