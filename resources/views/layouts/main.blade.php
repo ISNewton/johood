@@ -35,8 +35,14 @@
 <style type="text/css">.fancybox-margin{margin-right:0px;}</style></head>
 <body>
   <!--header section start -->
-  <div class="header_section">
-     <nav class="navbar navbar-expand-lg navbar-light bg-light" dir="rtl" lang="ar">
+  <div class="header_section" style="
+    background-image: url({{ asset('images/banner-bg.jpg') }});
+  
+  ">
+     <nav class="navbar navbar-expand-lg navbar-light bg-light" dir="rtl" lang="ar" style="
+    background-image: url({{ asset('images/header-bg.png') }});
+     
+     ">
         <div class="logo"><a href="index.html"><img src=""></a></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -64,6 +70,9 @@
            </ul>
         </div>
      </nav>
+     @yield('slider')
+
+
      <!--banner section start -->
     
      <!--banner section end -->
@@ -77,20 +86,20 @@
   <div class="footer_section layout_padding" dir="rtl" lang="ar">
      <div class="container">
         <div class="location_main">
-           <div class="location_text"><img src="images/map-icon.png"><span class="padding_left_10"><a href="#">اركويت شارع عبيد ختم </a></span></div>
-           <div class="location_text center"><img src="images/call-icon.png"><span class="padding_left_10"><a href="#">Call ; 01 1234567890</a></span></div>
-           <div class="location_text right"><img src="images/mail-icon.png"><span class="padding_left_10"><a href="#">demo@gmail.com</a></span></div>
+           <div class="location_text"><img src="{{ asset('images/map-icon.png') }}"><span class="padding_left_10"><a href="#">اركويت شارع عبيد ختم </a></span></div>
+           <div class="location_text center"><img src="{{ asset('images/images/call-icon.png') }}"><span class="padding_left_10"><a href="#">Call ; 01 1234567890</a></span></div>
+           <div class="location_text right"><img src="{{ asset('images/images/mail-icon.png') }}"><span class="padding_left_10"><a href="#">demo@gmail.com</a></span></div>
         </div>
         <div class="footer_section_2" style="text-align:center; padding-right: 400px;">
            <div class="row">
               <div class="col-lg-4">
                  <div class="social_icon">
                     <ul>
-                       <li><a href="#"><img src="images/fb-icon.png"></a></li>
-                       <li><a href="#"><img src="images/twitter-icon.png"></a></li>
-                       <li><a href="#"><img src="images/linkedin-icon.png"></a></li>
-                       <li><a href="#"><img src="images/instagram-icon.png"></a></li>
-                       <li><a href="#"><img src="images/youtub-icon.png"></a></li>
+                       <li><a href="#"><img src="{{ asset('images/fb-icon.png') }}"></a></li>
+                       <li><a href="#"><img src="{{ asset('images/twitter-icon.png') }}"></a></li>
+                       <li><a href="#"><img src="{{ asset('images/linkedin-icon.png') }}"></a></li>
+                       <li><a href="#"><img src="{{ asset('images/instagram-icon.png') }}"></a></li>
+                       <li><a href="#"><img src="{{ asset('images/youtub-icon.png') }}"></a></li>
                     </ul>
                  </div>
               </div>
@@ -109,7 +118,7 @@
   <!-- Javascript files-->
   <script src="{{ asset("js/jquery.min.js") }}"></script>
   <script src="{{ asset("js/popper.min.js") }}"></script>
-  <script src="{{ asset("js/bootstrap.bundle.min.jss") }}"></script>
+  <script src="{{ asset("js/bootstrap.bundle.min.js") }}"></script>
   <script src="{{ asset("js/jquery-3.0.0.min.js") }}"></script>
   <script src="{{ asset("js/plugin.js") }}"></script>
   <!-- sidebar -->
@@ -117,6 +126,8 @@
   <script src="{{ asset("js/custom.js") }}"></script>
   <!-- javascript --> 
   <script src="{{ asset("js/owl.carousel.js") }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  
   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 
 </body></html>

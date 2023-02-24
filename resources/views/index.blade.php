@@ -1,6 +1,6 @@
 @extends('layouts.main')
-@section('content')
-  
+
+@section('slider')
 <div class="banner_section layout_padding">
   <div class="container-fluid">
      <section class="slide-wrapper">
@@ -53,6 +53,10 @@
      </section>
   </div>
 </div>
+@endsection
+@section('content')
+  
+
 
   <!-- blog section start -->
   <div class="blog_section layout_padding" style="text-align:right;">

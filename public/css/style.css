@@ -224,13 +224,13 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-image: url(../images/banner-bg.jpg);
+    /* background-image: url(../images/banner-bg.jpg); */
     height: auto;
     background-size: 100%;
 }
 
 .bg-light {
-    background-image: url(../images/header-bg.png);
+    /* background-image: url(../images/header-bg.png); */
     background-color: transparent !important;
     background-size: 100%;
     background-repeat: no-repeat;
