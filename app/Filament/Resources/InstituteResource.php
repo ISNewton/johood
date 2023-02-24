@@ -13,16 +13,17 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\InstituteResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\InstituteResource\RelationManagers;
+use App\Models\Institution;
 
 class InstituteResource extends Resource
 {
-    protected static ?string $model = Institute::class;
+    protected static ?string $model = Institution::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $label = 'مؤسسة';
 
-    protected static ?string $pluralLabel = 'مؤسسات';
+    protected static ?string $pluralLabel = 'المؤسسات';
 
 
 
@@ -31,7 +32,7 @@ class InstituteResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title')->label(__('admin.products.title'))->required(),
+                TextInput::make('title')->label(__('admin.institutions.title'))->required(),
             ]);
     }
 
@@ -39,14 +40,14 @@ class InstituteResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')->label(__('admin.products.title'))->searchable(),
-
+                Tables\Columns\TextColumn::make('title')->label(__('admin.institutions.title'))->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

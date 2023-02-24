@@ -90,5 +90,12 @@ return [
     'updated_at' => 'تاريخ التعديل',
     'deleted_at' => 'تاريخ الحذف',
     
-  ]
+  ],
+
+  'institutions' => [
+    'institutions' => 'المؤسسات',
+    'institution' => 'مؤسسة',
+    'title' => 'الاسم',
+    
+  ],
 ];
