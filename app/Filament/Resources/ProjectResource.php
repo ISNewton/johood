@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProjectResource\Pages;
+use App\Filament\Resources\ProjectResource\RelationManagers\InstitutionsRelationManager;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProjectResource\RelationManagers\ProductsRelationManager;
 
@@ -54,6 +55,7 @@ class ProjectResource extends Resource
     {
         return [
             ProductsRelationManager::class,
+            InstitutionsRelationManager::class,
         ];
     }
 

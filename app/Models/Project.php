@@ -17,4 +17,9 @@ class Project extends Model
         return $this->belongsToMany(Product::class,'product_projects');
     }
 
+    public function institutions(): BelongsToMany
+    {
+        return $this->belongsToMany(Institution::class,'institution_projects');
+    }
+
 }

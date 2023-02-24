@@ -13,6 +13,10 @@ class Institution extends Model
         'title',
     ];
 
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class,'institution_projects');
+    }
 
 
 }
