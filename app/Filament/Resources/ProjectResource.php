@@ -12,7 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\ProjectResource\RelationManagers;
+use App\Filament\Resources\ProjectResource\RelationManagers\ProductsRelationManager;
 
 class ProjectResource extends Resource
 {
@@ -23,7 +23,7 @@ class ProjectResource extends Resource
     protected static ?string $label = 'مشروع';
 
     protected static ?string $pluralLabel = 'المشاريع';
-    
+
 
     public static function form(Form $form): Form
     {
@@ -53,7 +53,7 @@ class ProjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ProductsRelationManager::class,
         ];
     }
 
