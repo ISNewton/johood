@@ -98,4 +98,10 @@ return [
     'title' => 'الاسم',
     
   ],
+
+  'projects' => [
+    'projects' => 'المشاريع',
+    'project' => 'مشروع',
+    'title' => 'الاسم',
+  ],
 ];
