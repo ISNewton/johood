@@ -33,4 +33,9 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsToMany(User::class,'orders');
     }
+
+    public function projects() : BelongsToMany
+    {
+        return $this->belongsToMany(Project::class);
+    }
 }
