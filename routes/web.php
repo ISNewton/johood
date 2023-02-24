@@ -19,10 +19,17 @@ use Illuminate\Support\Facades\Route;
 
 // Route::group(['prefix' => 'dashboard' , 'as' => 'dashboard.'], function () {
 
-//     Route::get('/dashbaord/products/data')->name('products.data');
+//     Route::get('/dashbaord/blog/data')->name('products.data');
 //     Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
 // });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
+Route::get('/products', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
 Route::post('/save_product/{product}', [App\Http\Controllers\HomeController::class, 'save'])->name('form.save');
 Route::get('/form', [App\Http\Controllers\HomeController::class, 'form'])->name('form');
+
+Route::view('/', 'index')->name('index');
+Route::view('/services', 'services')->name('services');
+Route::view('/products', 'products')->name('products');
+Route::view('/blog', 'blog')->name('blog');
+Route::view('/dog', 'dog')->name('dog');
+Route::view('/contact', 'contact')->name('contact');
