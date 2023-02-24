@@ -14,15 +14,19 @@ class ProductsRelationManager extends RelationManager
 {
     protected static string $relationship = 'products';
 
-    protected static ?string $recordTitleAttribute = 'id';
+    protected static ?string $recordTitleAttribute = 'title';
+
+    protected static ?string $label = 'منتج';
+    protected static ?string $pluralLabel = 'المنتجات';
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // Forms\Components\TextInput::make('title')
-                //     ->required()
-                //     ->maxLength(255),
+                Forms\Components\TextInput::make('title')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -31,16 +35,17 @@ class ProductsRelationManager extends RelationManager
         return $table
             ->columns([
                 // Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('title')->label(__('admin.products.title')),
+
             ])
             ->filters([
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\AttachAction::make()->preloadRecordSelect(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DetachAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

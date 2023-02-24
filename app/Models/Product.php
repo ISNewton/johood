@@ -36,6 +36,6 @@ class Product extends Model implements HasMedia
 
     public function projects() : BelongsToMany
     {
-        return $this->belongsToMany(Project::class);
+        return $this->belongsToMany(Project::class , 'product_projects');
     }
 }
