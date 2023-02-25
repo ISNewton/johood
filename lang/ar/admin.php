@@ -103,5 +103,7 @@ return [
     'projects' => 'المشاريع',
     'project' => 'مشروع',
     'title' => 'الاسم',
+    'description' => 'الوصف',
+    'is_visible' => 'متاح',
   ],
 ];

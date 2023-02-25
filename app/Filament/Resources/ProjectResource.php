@@ -8,12 +8,14 @@ use App\Models\Project;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProjectResource\Pages;
-use App\Filament\Resources\ProjectResource\RelationManagers\InstitutionsRelationManager;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProjectResource\RelationManagers\ProductsRelationManager;
+use App\Filament\Resources\ProjectResource\RelationManagers\InstitutionsRelationManager;
+use Filament\Forms\Components\RichEditor;
 
 class ProjectResource extends Resource
 {
@@ -31,6 +33,8 @@ class ProjectResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title')->label(__('admin.projects.title'))->required(),
+                Checkbox::make('is_visible')->label(__('admin.projects.is_visible'))->default(true)->columnSpanFull(),
+                RichEditor::make('description')->label(__('admin.projects.description'))->columnSpanFull(),
             ]);
     }
 
