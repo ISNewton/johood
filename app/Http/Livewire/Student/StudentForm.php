@@ -70,7 +70,7 @@ class StudentForm extends Component
             'house_owner_personal_id_photo' => 'required|image|mimes:jpg,jpeg,png,web|max:1024',
             'house_certificate_photo' => 'required|image|mimes:jpg,jpeg,png,web|max:1024',
 
-            'student.payment_method' => 'required|in:fawry,bankak',
+            // 'student.payment_method' => 'required|in:fawry,bankak',
             'student.payment_number' => 'required|integer',
             'student.payment_date' => 'required|date',
         ];
@@ -128,7 +128,7 @@ class StudentForm extends Component
             'guarantor_personal_id_photo' => __('admin.users.guarantor_personal_id_photo'),
         ]);
 
-        $this->student->payment_method = 'bankak';
+        // $this->student->payment_method = 'bankak';
 
         $this->currentStep = 4;
     }
@@ -159,11 +159,11 @@ class StudentForm extends Component
     public function validatePaymentInfo()
     {
         $this->validate([
-            'student.payment_method' => 'required|in:fawry,bankak',
+            // 'student.payment_method' => 'required|in:fawry,bankak',
             'student.payment_number' => 'required|integer|unique:users,payment_number',
             'student.payment_date' => 'required|date|before_or_equal:today',
         ], [], [
-            'student.payment_method' => __('admin.payments.payment_method'),
+            // 'student.payment_method' => __('admin.payments.payment_method'),
             'student.payment_number' => __('admin.payments.payment_number'),
             'student.payment_date' => __('admin.payments.payment_date'),
         ]);
@@ -187,17 +187,17 @@ class StudentForm extends Component
 
             $user = User::create($student->toArray());
 
-            $product = Product::find(session()->get('product_id'));
+            // $product = Product::find(session()->get('product_id'));
 
-            Order::create([
-                'user_id' => $user->id,
-                'product_id' => $product->id,
-                'quantity' => 1,
-                'price' => session()->get('installment_type') == 12 ? $product->price_for_12_months : $product->price_for_24_months,
-                'status' => Order::STATUS_PENDING,
-                'installment_type' => session()->get('installment_type'),
-                'with_sim_card' => session()->get('with_sim_card')
-            ]);
+            // Order::create([
+            //     'user_id' => $user->id,
+            //     // 'product_id' => $product->id,
+            //     'quantity' => 1,
+            //     'price' => session()->get('installment_type') == 12 ? $product->price_for_12_months : $product->price_for_24_months,
+            //     'status' => Order::STATUS_PENDING,
+            //     'installment_type' => session()->get('installment_type'),
+            //     'with_sim_card' => session()->get('with_sim_card')
+            // ]);
 
             $this->student->addMedia(Image::make($this->photo)->basePath())
                 ->usingName(Str::uuid())

@@ -39,13 +39,20 @@
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-city-line jsTest-address-lineField ">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <select class="form-textbox form-address-city" wire:model.defer='student.payment_method'
+                            {{-- <select class="form-textbox form-address-city" wire:model.defer='student.payment_method'
                                 name="" id="">
                                 <option value="bankak">بنك الخرطوم - بنكك</option>
                                 <option value="fawry">بنك فيصل - فوري</option>
                             </select>
                             <label class="form-sub-label" id="label2" style="min-height:13px" aria-hidden="false">وسيلة
-                                الدفع</label>
+                                الدفع</label> --}}
+                                <input wire:model.defer='student.payment_date' type="date" id="input3"
+                                name="q34_address[addr_line2]" class="form-textbox form-address-line" />
+                            <label class="form-sub-label" id="label3_5" style="min-height:13px"
+                                aria-hidden="false">@lang('admin.payments.payment_date')</label>
+                            @error('student.payment_date')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </span>
 
                     </span>
@@ -69,13 +76,13 @@
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
                     <span class="form-address-line form-address-street-line jsTest-address-lineField">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input wire:model.defer='student.payment_date' type="date" id="input3"
+                            {{-- <input wire:model.defer='student.payment_date' type="date" id="input3"
                                 name="q34_address[addr_line2]" class="form-textbox form-address-line" />
                             <label class="form-sub-label" id="label3_5" style="min-height:13px"
                                 aria-hidden="false">@lang('admin.payments.payment_date')</label>
                             @error('student.payment_date')
                             <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            @enderror --}}
                         </span>
                     </span>
                 </div>
