@@ -8,7 +8,7 @@
         <div class="quick_icon_1"><img src="images/quick-icon1.png"></div>
       </div>
       <p class="dummy_text">{!! $project->description !!}</p>
-      <div class="read_bt" style="margin-right:150px;"><a href="blog.html">ديجي شباب</a></div>
+      <div class="read_bt" style="margin-right:150px;"><a href="{{ route('form') }}">سجل</a></div>
     </div>
   </div>
   @empty
