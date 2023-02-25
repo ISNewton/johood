@@ -41,7 +41,6 @@ class StudentForm extends Component
             'guarantor_gender' => 'male',
         ]);
 
-        dd(session()->get('project_id'));
 
         $this->project = Project::with('products','institutions')->find(session()->get('project_id'));
 

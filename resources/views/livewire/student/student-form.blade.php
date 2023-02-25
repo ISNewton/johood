@@ -285,7 +285,8 @@
             </span>
         </span>
     </div>-->
-    @foreach ($products as $product)
+    <!--
+        {{-- @foreach ($products as $product) --}}
 
     <div class="container" style="margin-top:100px">
       <div class="single-product">
@@ -369,7 +370,9 @@
       </div>
   
     </div>
-    @endforeach
+    {{-- @endforeach --}}
+-->
+{{ dd($project) }}
 
     @elseif($currentStep == 3)
     <li class="form-line" id="li2_3" style="text-align:right;">
