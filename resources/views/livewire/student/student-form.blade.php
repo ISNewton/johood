@@ -120,7 +120,7 @@
     @elseif($currentStep == 2)
 
 
-    <li class="form-line" id="li3" style="text-align:right;">
+    <!--<li class="form-line" id="li3" style="text-align:right;">
         <div id="div1" class="form-input-wide">
             <div class="form-address-table jsTest-addressField">
                 <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
@@ -284,7 +284,92 @@
                 </li>
             </span>
         </span>
+    </div>-->
+    @foreach ($products as $product)
+
+    <div class="container" style="margin-top:100px">
+      <div class="single-product">
+        <form action="{{ route('form.save',$product->id) }}" method="POST">
+          @csrf
+          <div class="row">
+            <div class="col-6">
+              <div class="product-image">
+                <div class="product-image-main">
+                  <img src="{{ $product->media->first()->getUrl() }}" alt="" id="product-main-image">
+                </div>
+  
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="col-6">
+              <div class="breadcrumb">
+                <span><a href="#"> </a></span>
+              </div>
+  
+              <div class="product">
+                <div class="product-title">
+                  <h2>{{ $product->title }}</h2>
+                </div>
+  
+                {{-- <div class="product-price">
+                  <span class="offer-price">{{ $product->price }} SDG</span>
+                </div> --}}
+  
+                <div class="product-details">
+                  <h3>وصف الجهاز</h3>
+                  <p>{!! $product->description !!}</p>
+                </div>
+  
+                <div class="product-color">
+                  <h4>اختيار طريقة التقسيط</h4>
+                  <div class="color-layout" style="flex-direction:column">
+                    {{-- <input type="radio" name="color" value="black" class="color-input"> --}}
+                  
+                    <div>
+                      <h4 style="display:inline-block">القسط الشهري ل 12 شهر {{ $product->price_for_12_months }}  ألف</h4>
+                      <input type="radio" name="installment_type" value="12">
+                      @error('installment_type')
+                        <span style="color:red">{{ $message }}</span>
+                          
+                      @enderror
+                    </div>
+                    <div>
+                      <h4 style="display:inline-block">القسط الشهري ل 24 شهر {{ $product->price_for_24_months }} ألف</h4>
+                      <input type="radio" name="installment_type" value="24">
+                    </div>
+  
+                  </div>
+                  <br>
+                  <fieldset>
+                    <legend style="font-size: 18px; font-weight: 500;">اذا كنت ترغب في امتلاك شريحة بيانات ومكالمات</legend>
+                    <div>
+                      <input type="checkbox" id="coding1" name="with_sim_card" value="true" />
+                      <label for="coding1">شريحة بيانات مخفضة بنسبة 60% ومكالمات مجانية داخل الشبكة وتخفيض 60% خارج
+                        الشبكة</label>
+                    </div>
+                  </fieldset>
+                </div>
+                <span class="divider"></span>
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="product-image-slider">
+            @foreach ($product->media as $media)
+            <img src="{{ $media->getUrl() }}" alt="" class="image-list">
+            @endforeach
+          </div>
+          <button type="submit" class="favorite styled" type="button">
+            اشتراك
+          </button>
+        </form>
+  
+      </div>
+  
     </div>
+    @endforeach
 
     @elseif($currentStep == 3)
     <li class="form-line" id="li2_3" style="text-align:right;">

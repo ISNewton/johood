@@ -38,6 +38,8 @@ class StudentForm extends Component
             'gender' => 'male',
             'guarantor_gender' => 'male',
         ]);
+
+        dd(session()->get('project_id'));
     }
 
     protected function rules()

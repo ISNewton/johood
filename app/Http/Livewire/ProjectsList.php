@@ -18,4 +18,10 @@ class ProjectsList extends Component
     {
         return view('livewire.projects-list');
     }
+
+    public function register(Project $project) 
+    {
+        session()->put('project_id',$project->id);
+        return redirect()->route('form');
+    }
 }
