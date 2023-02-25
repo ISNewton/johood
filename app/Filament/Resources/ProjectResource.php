@@ -9,13 +9,14 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Checkbox;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProjectResource\RelationManagers\ProductsRelationManager;
 use App\Filament\Resources\ProjectResource\RelationManagers\InstitutionsRelationManager;
-use Filament\Forms\Components\RichEditor;
 
 class ProjectResource extends Resource
 {
@@ -43,6 +44,8 @@ class ProjectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')->label(__('admin.projects.title'))->searchable(),
+                IconColumn::make('is_visible')->label(__('admin.products.is_visible'))->boolean(),
+
             ])
             ->filters([
                 //

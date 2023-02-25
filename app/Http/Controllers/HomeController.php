@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,17 +17,17 @@ class HomeController extends Controller
         return view('student.form');
     }
 
-    public function products() {
-        $products = Product::with([
-            'media' => function ( $query) {
-                $query->where('collection_name', Product::MEDIA_COLLECTION);
-            }
-        ])
-        ->where('is_visible',true)
-        ->get();
+    // public function products() {
+    //     $products = Product::with([
+    //         'media' => function ( $query) {
+    //             $query->where('collection_name', Product::MEDIA_COLLECTION);
+    //         }
+    //     ])
+    //     ->where('is_visible',true)
+    //     ->get();
 
-        return view('student.products',compact('products'));
-    }
+    //     return view('student.products',compact('products'));
+    // }
 
     public function save(Product $product) {
 
@@ -41,4 +42,14 @@ class HomeController extends Controller
 
         return redirect()->route('form');
     }
+
+    // public function index() {
+    //     $projects = Project::where('is_visible',true)->get();
+    //     return view('index',compact('projects'));
+    // }
+
+    // public function products() {
+    //     $projects = Project::where('is_visible',true)->get();
+    //     return view('products',compact('projects'));
+    // }
 }
