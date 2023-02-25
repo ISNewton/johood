@@ -54,6 +54,8 @@ class OrderResource extends Resource
             ->schema([
                 Select::make('user_id')->label(__('admin.users.user'))
                     ->relationship('user', 'name')->required()->disabledOn('edit')
+                    ->searchable()
+                    ->preload()
                     // ->dehydrated(fn(Page $livewire) => dd($livewire instanceof EditRecord))
                     ,
                 Select::make('product_id')
