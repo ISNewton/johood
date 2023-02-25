@@ -20,7 +20,7 @@
                           <h1 class="banner_taital">ايزوتك الاستشارية وشركاء النهضة </h1>
                           <p class="banner_text">مبادرة جهود لترقية الاستثمار التنموي بالتعاون مع وزارة العمل الاصلاحي</p>
                           <div class="btn_main">
-                             <div class="contact_bt active "><a href="contact.html">تواصل معنا</a></div>
+                             <div class="contact_bt active "><a href="{{ route('contact') }}">تواصل معنا</a></div>
                           </div>
                        </div>
                     </div>
@@ -31,7 +31,7 @@
                           <h1 class="banner_taital">ايزوتك الاستشارية وشركاء النهضة</h1>
                           <p class="banner_text">برنامج جهود القومي لتطوير الادارة الاليكتروني ولتيسير وسائل التكنولوجيا الرقمية</p>
                           <div class="btn_main">
-                             <div class="contact_bt active "><a href="contact.html">تواصل معنا</a></div>
+                             <div class="contact_bt active "><a href="{{ route('contact') }}">تواصل معنا</a></div>
                           </div>
                        </div>
                     </div>
@@ -42,7 +42,7 @@
                           <h1 class="banner_taital">ايزوتك الاستشارية وشركاء النهضة</h1>
                           <p class="banner_text">معا نقفز بالتكنولوجيا ونرقي الاداء المؤسسي</p>
                           <div class="btn_main">
-                             <div class="contact_bt active "><a href="#">تواصل معنا</a></div>
+                             <div class="contact_bt active "><a href="{{ route('contact') }}">تواصل معنا</a></div>
                           </div>
                        </div>
                     </div>
