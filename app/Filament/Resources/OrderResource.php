@@ -53,22 +53,28 @@ class OrderResource extends Resource
         return $form
             ->schema([
                 Select::make('user_id')->label(__('admin.users.user'))
-                    ->relationship('user', 'name')->required()->disabledOn('edit')->dehydrated(fn (Page $livewire) => $livewire instanceof EditRecord),
+                    ->relationship('user', 'name')->required()->disabledOn('edit')
+                    // ->dehydrated(fn(Page $livewire) => dd($livewire instanceof EditRecord))
+                    ,
                 Select::make('product_id')
                     ->label(__('admin.products.product'))
                     ->relationship('product', 'title')
                     ->required()
                     ->reactive()
                     ->disabledOn('edit')
-                    ->dehydrated(fn (Page $livewire) => $livewire instanceof EditRecord)
-                    ->afterStateUpdated(fn ($set, $state) => $set('price', Product::find($state)?->price)),
+                    // ->dehydrated(fn(Page $livewire) => $livewire instanceof EditRecord)
+                // ->afterStateUpdated(fn ($set, $state) => $set('price', Product::find($state)?->price))
+                ,
                 Select::make('status')->label(__('admin.orders.status'))
                     ->options([
                         Order::STATUS_PENDING => __('admin.orders.' . Order::STATUS_PENDING),
                         Order::STATUS_REVIEWING => __('admin.orders.' . Order::STATUS_REVIEWING),
                         Order::STATUS_RECEIVED => __('admin.orders.' . Order::STATUS_RECEIVED),
                     ])->required(),
-                TextInput::make('price')->disabled()->dehydrated(false),
+                Select::make('price')->label(__('admin.products.price'))
+                    ->options(fn(callable $get) => Product::select('price_for_12_months', 'price_for_24_months')->find($get('product_id'))?->toArray())
+                    ->required()
+                    ,
 
             ]);
     }
@@ -78,7 +84,7 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('product.title')->label('اسم المنتج'),
-                TextColumn::make('user.payment_number')->label( __('admin.payments.payment_number'))->searchable(),
+                TextColumn::make('user.payment_number')->label(__('admin.payments.payment_number'))->searchable(),
                 TextColumn::make('user.name')->label(__('admin.users.user'))->searchable(),
                 TextColumn::make('created_at')->since()->label(__('admin.site.created_at'))->sortable(),
                 BadgeColumn::make('status')->label(__('admin.orders.status'))
