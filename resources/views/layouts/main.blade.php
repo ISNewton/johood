@@ -32,7 +32,9 @@
   <link rel="stylesheet" href="{{ asset("css/owl.carousel.min.css") }}">
   <link rel="stylesheet" href="{{ asset("css/owl.theme.default.min.css") }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-<style type="text/css">.fancybox-margin{margin-right:0px;}</style></head>
+<style type="text/css">.fancybox-margin{margin-right:0px;}</style>
+@livewireStyles
+</head>
 <body>
   <!--header section start -->
   <div class="header_section" style="
@@ -129,5 +131,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   
   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
+  @livewireScripts
 </body></html>

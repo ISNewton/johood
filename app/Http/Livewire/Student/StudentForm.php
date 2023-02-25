@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Student;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Project;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -25,6 +26,7 @@ class StudentForm extends Component
     public $house_owner_personal_id_photo;
     public $house_certificate_photo;
 
+    public $project;
 
     public function render()
     {
@@ -40,6 +42,10 @@ class StudentForm extends Component
         ]);
 
         dd(session()->get('project_id'));
+
+        $this->project = Project::with('products','institutions')->find(session()->get('project_id'));
+
+        
     }
 
     protected function rules()
