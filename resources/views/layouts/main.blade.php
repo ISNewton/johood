@@ -61,8 +61,8 @@
               <li class="nav-item {{ request()->is('*blog')  ? 'active' : ''}}">
                  <a class="nav-link" href="{{ route('blog') }}">ديجي شباب</a>
               </li>
-              <li class="nav-item {{ request()->is('*dog')  ? 'active' : ''}}">
-                 <a class="nav-link" href="{{ route('dog') }}">DCG</a>
+              <li class="nav-item {{ request()->is('*dcg')  ? 'active' : ''}}">
+                 <a class="nav-link" href="{{ route('dcg') }}">DCG</a>
               </li>
               <li class="nav-item {{ request()->is('*contact')  ? 'active' : ''}}">
                  <a class="nav-link" href="{{ route('contact') }}">تواصل معنا</a>

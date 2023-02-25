@@ -87,6 +87,6 @@
          </div>
       </div>
    </div>
-   <div class="read_bt" style="margin-right:125px;"><a href="personal_info.html">سجل الآن</a></div>
+   <div class="read_bt" style="margin-right:125px;"><a href="{{ route('form') }}">سجل الآن</a></div>
 </div>
 @endsection

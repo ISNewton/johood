@@ -28,9 +28,9 @@ Route::view('/', 'index')->name('index');
 Route::view('/services', 'services')->name('services');
 Route::view('/products', 'products')->name('products');
 Route::view('/blog', 'blog')->name('blog');
-Route::view('/dog', 'dog')->name('dog');
+Route::view('/dcg', 'dcg')->name('dcg');
 Route::view('/contact', 'contact')->name('contact');
 
 // Route::get('/apply/yproducts', [App\Http\Controllers\HomeController::class, 'products'])->name('products');
-Route::post('/apply/save_product/{product}', [App\Http\Controllers\HomeController::class, 'save'])->name('form.save');
+// Route::post('/apply/save_product/{product}', [App\Http\Controllers\HomeController::class, 'save'])->name('form.save');
 Route::get('/apply/form', [App\Http\Controllers\HomeController::class, 'form'])->name('form');
