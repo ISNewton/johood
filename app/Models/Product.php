@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Product extends Model implements HasMedia
 {
@@ -28,6 +29,11 @@ class Product extends Model implements HasMedia
     ];
 
     const MEDIA_COLLECTION = 'products';
+
+    public function images()
+    {
+        return $this->media()->where('collection_name', self::MEDIA_COLLECTION);
+    }
 
     public function users() : BelongsToMany
     {

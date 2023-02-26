@@ -18,7 +18,7 @@ class StudentForm extends Component
     use WithFileUploads;
 
     public User $student;
-    public $currentStep = 1;
+    public $currentStep = 2;
     public $photo;
     public $personal_id_photo;
     public $guarantor_photo;
@@ -42,9 +42,7 @@ class StudentForm extends Component
         ]);
 
 
-        $this->project = Project::with('products','institutions')->find(session()->get('project_id'));
-
-        
+        $this->project = Project::with('products.images','institutions')->find(session()->get('project_id'));
     }
 
     protected function rules()
